@@ -18,6 +18,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+	[_mapView setDelegate:self];
 }
 
 - (void)didReceiveMemoryWarning
@@ -26,4 +27,8 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)mapViewDidFinishLoadingMap:(MKMapView *)mapView
+{
+	NSLog(@"Hello");
+}
 @end

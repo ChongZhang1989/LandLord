@@ -10,5 +10,6 @@
 #import <MapKit/MapKit.h>
 
 @interface LandLordViewController : UIViewController<MKMapViewDelegate>
+@property (weak, nonatomic) IBOutlet MKMapView *mapView;
 
 @end
