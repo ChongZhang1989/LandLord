@@ -319,6 +319,9 @@
 		02015B3217277F6100AA98F6 /* woman.png in Resources */ = {isa = PBXBuildFile; fileRef = 02015A0617277F6100AA98F6 /* woman.png */; };
 		02015B3317277F6100AA98F6 /* wooden-picket.png in Resources */ = {isa = PBXBuildFile; fileRef = 02015A0717277F6100AA98F6 /* wooden-picket.png */; };
 		02015B3417277F6100AA98F6 /* write.png in Resources */ = {isa = PBXBuildFile; fileRef = 02015A0817277F6100AA98F6 /* write.png */; };
+		0299A5E017298F8A0010A0EA /* iPhone Login.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0299A5DF17298F8A0010A0EA /* iPhone Login.jpg */; };
+		0299A5E41729A9C60010A0EA /* text bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 0299A5E31729A9C60010A0EA /* text bg.png */; };
+		0299A5E71729B91B0010A0EA /* StartWindowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0299A5E61729B91B0010A0EA /* StartWindowViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -639,6 +642,10 @@
 		02015A0617277F6100AA98F6 /* woman.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = woman.png; sourceTree = "<group>"; };
 		02015A0717277F6100AA98F6 /* wooden-picket.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wooden-picket.png"; sourceTree = "<group>"; };
 		02015A0817277F6100AA98F6 /* write.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = write.png; sourceTree = "<group>"; };
+		0299A5DF17298F8A0010A0EA /* iPhone Login.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "iPhone Login.jpg"; path = "../../../../Desktop/iPhone Login.jpg"; sourceTree = "<group>"; };
+		0299A5E31729A9C60010A0EA /* text bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "text bg.png"; path = "../../../../Desktop/text bg.png"; sourceTree = "<group>"; };
+		0299A5E51729B91B0010A0EA /* StartWindowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartWindowViewController.h; sourceTree = "<group>"; };
+		0299A5E61729B91B0010A0EA /* StartWindowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartWindowViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -687,6 +694,8 @@
 		020158581727201F00AA98F6 /* LandLord */ = {
 			isa = PBXGroup;
 			children = (
+				0299A5E51729B91B0010A0EA /* StartWindowViewController.h */,
+				0299A5E61729B91B0010A0EA /* StartWindowViewController.m */,
 				020158611727201F00AA98F6 /* LandLordAppDelegate.h */,
 				020158621727201F00AA98F6 /* LandLordAppDelegate.m */,
 				0201586A1727201F00AA98F6 /* MainStoryboard.storyboard */,
@@ -700,6 +709,8 @@
 		020158591727201F00AA98F6 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				0299A5E31729A9C60010A0EA /* text bg.png */,
+				0299A5DF17298F8A0010A0EA /* iPhone Login.jpg */,
 				020158DC17277F5F00AA98F6 /* iconbeast lite - png */,
 				0201585A1727201F00AA98F6 /* LandLord-Info.plist */,
 				0201585B1727201F00AA98F6 /* InfoPlist.strings */,
@@ -1377,6 +1388,8 @@
 				02015B3217277F6100AA98F6 /* woman.png in Resources */,
 				02015B3317277F6100AA98F6 /* wooden-picket.png in Resources */,
 				02015B3417277F6100AA98F6 /* write.png in Resources */,
+				0299A5E017298F8A0010A0EA /* iPhone Login.jpg in Resources */,
+				0299A5E41729A9C60010A0EA /* text bg.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1390,6 +1403,7 @@
 				0201585F1727201F00AA98F6 /* main.m in Sources */,
 				020158631727201F00AA98F6 /* LandLordAppDelegate.m in Sources */,
 				0201586F1727201F00AA98F6 /* LandLordViewController.m in Sources */,
+				0299A5E71729B91B0010A0EA /* StartWindowViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
