@@ -70,7 +70,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="iPhone Login.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="gTm-2p-WN3"/>
-                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8vY-Tx-B9c">
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8vY-Tx-B9c">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="31" id="QQQ-nE-GpK"/>
                                     <constraint firstAttribute="width" constant="69" id="vs7-Zz-Edk"/>
@@ -164,7 +164,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M5g-dI-8Dw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-142" y="-1016"/>
+            <point key="canvasLocation" x="-682" y="-424"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="tXJ-Tv-NyK">
@@ -340,7 +340,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rrK-OZ-yyP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1431" y="-1221"/>
+            <point key="canvasLocation" x="-1431" y="-1301"/>
         </scene>
     </scenes>
     <resources>

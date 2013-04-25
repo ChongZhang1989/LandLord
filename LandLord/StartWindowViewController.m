@@ -53,9 +53,19 @@
 
 - (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
 {
-	NSLog(_username);
-	NSLog(_password);
-	return YES;
+	NSString *urlString= [NSString stringWithFormat:@"http://lordmap2k13.appspot.com/login?userId=%@&userPwd=%@", _username, _password];
+	NSURL *url = [NSURL URLWithString:urlString];
+	NSError *error = nil;
+	NSData *placeData = [NSData dataWithContentsOfURL:url options:0 error:&error];
+	if (error) {
+		NSLog(@"URL request error");
+	}
+	NSError *jsonError = nil;
+	NSDictionary *result = [NSJSONSerialization JSONObjectWithData:placeData options:0 error:&jsonError];
+	NSString *res = [result objectForKey:@"result"];
+	if ([res isEqualToString:@"yes"])
+		return YES;
+	return NO;
 }
 
 - (IBAction)buttonPressed:(id)sender
