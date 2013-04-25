@@ -8,6 +8,7 @@
 
 #import "StartWindowViewController.h"
 #import "LandLordViewController.h"
+#import "TabBarController.h"
 
 @interface StartWindowViewController ()
 
@@ -83,8 +84,10 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
 	if ([segue.identifier isEqualToString:@"login"]) {
-		LandLordViewController *landView = segue.destinationViewController;
-		landView.username = _username;
+		//LandLordViewController *landView = segue.destinationViewController;
+		//landView.username = _username;
+		TabBarController *barView = segue.destinationViewController;
+		barView.username = _username;
 	}
 }
 

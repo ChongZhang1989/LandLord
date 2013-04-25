@@ -322,6 +322,7 @@
 		0299A5E71729B91B0010A0EA /* StartWindowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0299A5E61729B91B0010A0EA /* StartWindowViewController.m */; };
 		0299A5EA1729D5B30010A0EA /* iPhone Login.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0299A5E81729D5B30010A0EA /* iPhone Login.jpg */; };
 		0299A5EB1729D5B30010A0EA /* text bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 0299A5E91729D5B30010A0EA /* text bg.png */; };
+		0299A5EE1729DB9D0010A0EA /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0299A5ED1729DB9D0010A0EA /* TabBarController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -646,6 +647,8 @@
 		0299A5E61729B91B0010A0EA /* StartWindowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartWindowViewController.m; sourceTree = "<group>"; };
 		0299A5E81729D5B30010A0EA /* iPhone Login.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "iPhone Login.jpg"; path = "../iPhone Login.jpg"; sourceTree = "<group>"; };
 		0299A5E91729D5B30010A0EA /* text bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "text bg.png"; path = "../text bg.png"; sourceTree = "<group>"; };
+		0299A5EC1729DB9D0010A0EA /* TabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarController.h; sourceTree = "<group>"; };
+		0299A5ED1729DB9D0010A0EA /* TabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -696,6 +699,8 @@
 			children = (
 				0299A5E51729B91B0010A0EA /* StartWindowViewController.h */,
 				0299A5E61729B91B0010A0EA /* StartWindowViewController.m */,
+				0299A5EC1729DB9D0010A0EA /* TabBarController.h */,
+				0299A5ED1729DB9D0010A0EA /* TabBarController.m */,
 				020158611727201F00AA98F6 /* LandLordAppDelegate.h */,
 				020158621727201F00AA98F6 /* LandLordAppDelegate.m */,
 				0201586A1727201F00AA98F6 /* MainStoryboard.storyboard */,
@@ -1404,6 +1409,7 @@
 				020158631727201F00AA98F6 /* LandLordAppDelegate.m in Sources */,
 				0201586F1727201F00AA98F6 /* LandLordViewController.m in Sources */,
 				0299A5E71729B91B0010A0EA /* StartWindowViewController.m in Sources */,
+				0299A5EE1729DB9D0010A0EA /* TabBarController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
