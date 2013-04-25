@@ -11,5 +11,6 @@
 
 @interface LandLordViewController : UIViewController<MKMapViewDelegate>
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
+@property (nonatomic, strong) NSString *username;
 
 @end

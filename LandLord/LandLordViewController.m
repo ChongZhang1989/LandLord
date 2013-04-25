@@ -9,10 +9,15 @@
 #import "LandLordViewController.h"
 
 @interface LandLordViewController ()
-
+@property (nonatomic, strong) NSMutableArray *surroundings;
 @end
 
 @implementation LandLordViewController
+
+@synthesize surroundings = _surroundings;
+@synthesize username = _username;
+
+int refresh = 0;
 
 - (void)viewDidLoad
 {
@@ -27,8 +32,19 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)getSurroundings:(CLLocationCoordinate2D) location
+{
+}
+
 - (void)mapViewDidFinishLoadingMap:(MKMapView *)mapView
 {
 	NSLog(@"Hello");
+	NSLog(_username);
+	NSLog(@"Hello2");
+	if (!refresh) {
+		refresh = 1;
+		[self getSurroundings:[_mapView centerCoordinate]];
+	}
 }
+
 @end

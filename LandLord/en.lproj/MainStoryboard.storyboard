@@ -84,6 +84,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
+                                    <action selector="buttonPressed:" destination="SRm-Ry-kkt" eventType="touchUpInside" id="U9Z-7D-vd7"/>
                                     <segue destination="Tin-My-ge3" kind="push" identifier="signup" id="AC3-zZ-3sV"/>
                                 </connections>
                             </button>
@@ -123,6 +124,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
+                                    <action selector="buttonPressed:" destination="SRm-Ry-kkt" eventType="touchUpInside" id="sWy-9Y-Ena"/>
                                     <segue destination="vZe-ft-jjQ" kind="push" identifier="login" id="kvm-gJ-Mj7"/>
                                 </connections>
                             </button>
@@ -178,10 +180,11 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="pF0-pJ-kac" kind="relationship" relationship="viewControllers" id="XrV-Eu-o8K"/>
                         <segue destination="z3G-W2-uuR" kind="relationship" relationship="viewControllers" id="Gxd-B9-TzT"/>
                         <segue destination="ttj-4x-eVk" kind="relationship" relationship="viewControllers" id="jAq-if-EVI"/>
                         <segue destination="eBX-cV-wrQ" kind="relationship" relationship="viewControllers" id="GzX-6u-gdS"/>
+                        <segue destination="XEF-Kl-Ei3" kind="relationship" relationship="viewControllers" id="OEx-xG-nzw"/>
+                        <segue destination="pF0-pJ-kac" kind="push" identifier="login" id="YCd-TT-xlz"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AK6-xH-al3" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -194,13 +197,14 @@
                 <navigationController id="pF0-pJ-kac" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Surroundings" image="map-pin.png" id="OmX-4Y-Zz8"/>
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="BzR-2B-EDl"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="5Ax-AB-ZbR">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="2" kind="relationship" relationship="rootViewController" id="v3h-lA-9TC"/>
+                        <segue destination="2" kind="push" identifier="login" id="eUW-sj-Jm8"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Deh-FO-x3E" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -324,6 +328,36 @@
             </objects>
             <point key="canvasLocation" x="440" y="442"/>
         </scene>
+        <!--Table View Controller-->
+        <scene sceneID="D35-Ed-EaF">
+            <objects>
+                <tableViewController id="68L-jG-we6" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="VKx-qd-xpj">
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="0Sm-el-Mtd">
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="68L-jG-we6" id="fj9-x1-jjC"/>
+                            <outlet property="delegate" destination="68L-jG-we6" id="FqV-Lh-LJ7"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="WLh-DM-WMD"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JTG-WX-2vg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="962" y="1193"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="La9-aB-yKt">
             <objects>
@@ -342,6 +376,25 @@
             </objects>
             <point key="canvasLocation" x="-1431" y="-1301"/>
         </scene>
+        <!--Navigation Controller - Message-->
+        <scene sceneID="QX9-Nc-2t1">
+            <objects>
+                <navigationController id="XEF-Kl-Ei3" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Message" image="message.png" id="vfp-yl-w4F"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="3lg-qd-ODI">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="68L-jG-we6" kind="relationship" relationship="rootViewController" id="fFq-CI-fv0"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ERK-j6-qFO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="436" y="1193"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Default.png" width="320" height="480"/>
@@ -349,6 +402,7 @@
         <image name="iPhone Login.jpg" width="640" height="1136"/>
         <image name="man.png" width="30" height="30"/>
         <image name="map-pin.png" width="30" height="30"/>
+        <image name="message.png" width="30" height="30"/>
         <image name="shopping-cart.png" width="29" height="30"/>
         <image name="text bg.png" width="37" height="21"/>
     </resources>

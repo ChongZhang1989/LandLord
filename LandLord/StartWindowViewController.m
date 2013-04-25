@@ -7,6 +7,7 @@
 //
 
 #import "StartWindowViewController.h"
+#import "LandLordViewController.h"
 
 @interface StartWindowViewController ()
 
@@ -53,15 +54,23 @@
 
 - (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
 {
+	//for test convenience
+	return YES;
+	
+	
 	NSString *urlString= [NSString stringWithFormat:@"http://lordmap2k13.appspot.com/login?userId=%@&userPwd=%@", _username, _password];
 	NSURL *url = [NSURL URLWithString:urlString];
 	NSError *error = nil;
 	NSData *placeData = [NSData dataWithContentsOfURL:url options:0 error:&error];
 	if (error) {
 		NSLog(@"URL request error");
+		return NO;
 	}
 	NSError *jsonError = nil;
 	NSDictionary *result = [NSJSONSerialization JSONObjectWithData:placeData options:0 error:&jsonError];
+	if (jsonError) {
+		return NO;
+	}
 	NSString *res = [result objectForKey:@"result"];
 	if ([res isEqualToString:@"yes"])
 		return YES;
@@ -70,4 +79,13 @@
 
 - (IBAction)buttonPressed:(id)sender
 {}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+	if ([segue.identifier isEqualToString:@"login"]) {
+		LandLordViewController *landView = segue.destinationViewController;
+		landView.username = _username;
+	}
+}
+
 @end
