@@ -184,12 +184,12 @@
                         <segue destination="ttj-4x-eVk" kind="relationship" relationship="viewControllers" id="jAq-if-EVI"/>
                         <segue destination="eBX-cV-wrQ" kind="relationship" relationship="viewControllers" id="GzX-6u-gdS"/>
                         <segue destination="XEF-Kl-Ei3" kind="relationship" relationship="viewControllers" id="OEx-xG-nzw"/>
-                        <segue destination="pF0-pJ-kac" kind="push" identifier="login" id="YCd-TT-xlz"/>
+                        <segue destination="pF0-pJ-kac" kind="relationship" relationship="viewControllers" id="bN5-7H-GUQ"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AK6-xH-al3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-57" y="-1795"/>
+            <point key="canvasLocation" x="27" y="-1745"/>
         </scene>
         <!--Navigation Controller - Surroundings-->
         <scene sceneID="gH6-4C-83T">
