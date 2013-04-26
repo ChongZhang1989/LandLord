@@ -9,6 +9,7 @@
 #import "LandLordViewController.h"
 #import "LandLordAppDelegate.h"
 
+
 @interface LandLordViewController ()
 @property (nonatomic, strong) NSMutableArray *surroundings;
 @property (nonatomic, strong) NSString *username;
@@ -39,7 +40,54 @@ int refresh = 0;
 
 - (void)getSurroundings:(CLLocationCoordinate2D) location
 {
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^
+    {
+        NSString *urlstr = [NSString stringWithFormat:@"http://lordmap2k13.appspot.com/login?userId=fewafdf&userPwd=aefae"];
+        NSURL *surrurl = [NSURL URLWithString:urlstr];
+        NSError *error = nil;
+        NSData *surrJSON = [NSData dataWithContentsOfURL:surrurl options:0 error:&error];
+        
+        NSDictionary *jsonroot = [NSJSONSerialization JSONObjectWithData:surrJSON options:NSJSONReadingMutableContainers error:0];
+        
+        
+        //Add pins here in a new thread
+        
+        
+        
+    });
     
+}
+
+- (MKAnnotationView *)mapView:(MKMapView *)mv viewForAnnotation:(id <MKAnnotation>)annotation
+{
+    NSString *annotationIdentifier = @"LandPin";
+    MyPinView *pinView = (MyPinView *) [_mapView dequeueReusableAnnotationViewWithIdentifier:annotationIdentifier];
+    
+    if(!pinView)
+    {
+        pinView = [[MyPinView alloc]
+                   initWithAnnotation: annotation
+                   reuseIdentifier:annotationIdentifier];
+        pinView.canShowCallout = YES;
+        UIImageView *houseIconView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Supporting Files/iconbeast lite - png/home.png"]];
+        [houseIconView setFrame:CGRectMake(0, 0, 30, 30)];
+        pinView.leftCalloutAccessoryView = houseIconView;
+        //[houseIconView release];
+    }
+    else{
+        pinView.annotation = annotation;
+    }
+    
+    return pinView;
+    
+}
+
+-(void)putPinsOnMap: (CLLocationCoordinate2D)location
+{
+    MapPin *pin = [[MapPin alloc] init];
+    [pin setTitle:@"This is a test"];
+    [pin setCoordinate:location];
+    [_mapView addAnnotation:pin];
 }
 
 - (void)mapViewDidFinishLoadingMap:(MKMapView *)mapView
