@@ -7,6 +7,7 @@
 //
 
 #import "TabBarController.h"
+#import "LandLordAppDelegate.h"
 
 @interface TabBarController ()
 
@@ -30,6 +31,8 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
 	NSLog(@"username = %@", _username);
+    LandLordAppDelegate *delegate = (LandLordAppDelegate *)[[UIApplication sharedApplication] delegate];
+    delegate.username = _username;
 }
 
 - (void)didReceiveMemoryWarning
@@ -37,5 +40,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 @end
