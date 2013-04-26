@@ -326,6 +326,7 @@
 		0299A5EE1729DB9D0010A0EA /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0299A5ED1729DB9D0010A0EA /* TabBarController.m */; };
 		FA9B4B1F172A0B6C005D2BE5 /* MyPinView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9B4B1E172A0B6C005D2BE5 /* MyPinView.m */; };
 		FA9B4D7B172A0C8C005D2BE5 /* MapPin.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9B4D7A172A0C8C005D2BE5 /* MapPin.m */; };
+		FA9B4D7E172A23A3005D2BE5 /* OrgPin.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9B4D7D172A23A3005D2BE5 /* OrgPin.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -958,6 +959,8 @@
 		FA9B4C4C172A0BDD005D2BE5 /* write.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = write.png; sourceTree = "<group>"; };
 		FA9B4D79172A0C8C005D2BE5 /* MapPin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapPin.h; sourceTree = "<group>"; };
 		FA9B4D7A172A0C8C005D2BE5 /* MapPin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapPin.m; sourceTree = "<group>"; };
+		FA9B4D7C172A23A3005D2BE5 /* OrgPin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OrgPin.h; path = "../iconbeast-lite/iconbeast lite - png/OrgPin.h"; sourceTree = "<group>"; };
+		FA9B4D7D172A23A3005D2BE5 /* OrgPin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OrgPin.m; path = "../iconbeast-lite/iconbeast lite - png/OrgPin.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1009,6 +1012,8 @@
 				FA9B4B20172A0BDA005D2BE5 /* iconbeast lite - png */,
 				0299A5E51729B91B0010A0EA /* StartWindowViewController.h */,
 				0299A5E61729B91B0010A0EA /* StartWindowViewController.m */,
+				FA9B4D7C172A23A3005D2BE5 /* OrgPin.h */,
+				FA9B4D7D172A23A3005D2BE5 /* OrgPin.m */,
 				0299A5EC1729DB9D0010A0EA /* TabBarController.h */,
 				0299A5ED1729DB9D0010A0EA /* TabBarController.m */,
 				020158611727201F00AA98F6 /* LandLordAppDelegate.h */,
@@ -2037,6 +2042,7 @@
 				FA9B4B1F172A0B6C005D2BE5 /* MyPinView.m in Sources */,
 				FA9B4D7B172A0C8C005D2BE5 /* MapPin.m in Sources */,
 				0225B53C172A12380065E993 /* Land.m in Sources */,
+				FA9B4D7E172A23A3005D2BE5 /* OrgPin.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

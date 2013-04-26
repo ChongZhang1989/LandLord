@@ -63,7 +63,8 @@ int refresh = 0;
 {
     NSString *annotationIdentifier = @"LandPin";
     MyPinView *pinView = (MyPinView *) [_mapView dequeueReusableAnnotationViewWithIdentifier:annotationIdentifier];
-    
+    if([annotation isKindOfClass:[MapPin class]])
+    {
     if(!pinView)
     {
         pinView = [[MyPinView alloc]
@@ -80,6 +81,17 @@ int refresh = 0;
     }
     
     return pinView;
+    }
+    else if([annotation isKindOfClass:[OrgPin class]])
+    {
+        MKPinAnnotationView *newPin = (MKPinAnnotationView *)[_mapView dequeueReusableAnnotationViewWithIdentifier:annotationIdentifier];
+        [newPin setEnabled:YES];
+        [newPin setPinColor:MKPinAnnotationColorPurple];
+        [newPin setAnimatesDrop:YES];
+        return newPin;
+    }
+    
+    return nil;
     
 }
 
@@ -118,7 +130,6 @@ int refresh = 0;
 
 - (void)defaultPinsOnMap: (CLLocationCoordinate2D)location
 {
-	
 }
 
 - (void)longPress:(UILongPressGestureRecognizer*)gesture

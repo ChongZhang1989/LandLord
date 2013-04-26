@@ -1,5 +1,5 @@
 //
-//  MapPin.h
+//  OrgPin.h
 //  LandLord
 //
 //  Created by Alex Xia on 4/25/13.
@@ -10,11 +10,8 @@
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
 
-@interface MapPin : NSObject<MKAnnotation>
+@interface OrgPin :  NSObject<MKAnnotation>
 
 @property (nonatomic, strong) NSString *title, *subtitle, *time, *tweetID;
 @property CLLocationCoordinate2D coordinate;
-@property (nonatomic, strong) UIImage *image;
-
-
 @end
