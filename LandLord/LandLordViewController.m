@@ -11,6 +11,7 @@
 
 @interface LandLordViewController ()
 @property (nonatomic, strong) NSMutableArray *surroundings;
+@property (nonatomic, strong) NSString *username;
 @end
 
 @implementation LandLordViewController
@@ -25,6 +26,9 @@ int refresh = 0;
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
 	[_mapView setDelegate:self];
+    LandLordAppDelegate *delegate = (LandLordAppDelegate *)[[UIApplication sharedApplication] delegate];
+    _username = delegate.username;
+    NSLog(_username);
 }
 
 - (void)didReceiveMemoryWarning
@@ -35,6 +39,7 @@ int refresh = 0;
 
 - (void)getSurroundings:(CLLocationCoordinate2D) location
 {
+    
 }
 
 - (void)mapViewDidFinishLoadingMap:(MKMapView *)mapView
@@ -46,10 +51,8 @@ int refresh = 0;
 		refresh = 1;
 		[self getSurroundings:[_mapView centerCoordinate]];
 	}
-    LandLordAppDelegate *delegate = (LandLordAppDelegate *)[[UIApplication sharedApplication] delegate];
-    NSLog(@"Start to get it");
-    NSLog(delegate.username);
-    NSLog(@"Yes I did");
+   
+    
 }
 
 @end
