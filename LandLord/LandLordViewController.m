@@ -8,6 +8,7 @@
 
 #import "LandLordViewController.h"
 #import "LandLordAppDelegate.h"
+#import "Land.h"
 
 
 @interface LandLordViewController ()
@@ -40,7 +41,7 @@ int refresh = 0;
 
 - (void)getSurroundings:(CLLocationCoordinate2D) location
 {
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^
+	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^
     {
         NSString *urlstr = [NSString stringWithFormat:@"http://lordmap2k13.appspot.com/login?userId=fewafdf&userPwd=aefae"];
         NSURL *surrurl = [NSURL URLWithString:urlstr];
@@ -82,6 +83,31 @@ int refresh = 0;
     
 }
 
+- (MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id <MKOverlay>)overlay
+{
+    MKPolygonView *polygonView = [[MKPolygonView alloc] initWithPolygon:overlay];
+	polygonView.lineWidth = 0;
+    polygonView.strokeColor = [UIColor clearColor];
+    polygonView.fillColor = [[UIColor redColor] colorWithAlphaComponent: 0.5];
+    return polygonView;
+}
+
+
+- (void)putRecOnMap: (Land *) land
+{
+	CLLocationCoordinate2D p1 = land.upleft;
+	CLLocationCoordinate2D p2 = land.bottomright;
+	CLLocationCoordinate2D p[4];
+	p[0] = p1;
+	p[2] = p2;
+	p[1].latitude = p1.latitude;
+	p[1].longitude = p2.longitude;
+	p[3].latitude = p2.latitude;
+	p[3].longitude = p1.longitude;
+	MKPolygon *poly = [MKPolygon polygonWithCoordinates:p count:4];
+	[_mapView addOverlay:poly];
+}
+
 -(void)putPinsOnMap: (CLLocationCoordinate2D)location
 {
     MapPin *pin = [[MapPin alloc] init];
@@ -90,16 +116,28 @@ int refresh = 0;
     [_mapView addAnnotation:pin];
 }
 
+- (void)defaultPinsOnMap: (CLLocationCoordinate2D)location
+{
+	
+}
+
+- (void)longPress:(UILongPressGestureRecognizer*)gesture
+{
+	if (gesture.state == UIGestureRecognizerStateBegan) {
+		CGPoint touchPoint = [gesture locationInView:[self mapView]];
+		CLLocationCoordinate2D location = [self.mapView convertPoint:touchPoint toCoordinateFromView:self.mapView];
+		NSLog(@"lat = %f, long = %f", location.latitude, location.longitude);
+	}
+}
+
 - (void)mapViewDidFinishLoadingMap:(MKMapView *)mapView
 {
-	NSLog(@"Hello");
-	NSLog(_username);
-	NSLog(@"Hello2");
 	if (!refresh) {
 		refresh = 1;
 		[self getSurroundings:[_mapView centerCoordinate]];
 	}
-   
+	UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPress:)];
+	[self.mapView addGestureRecognizer:longPress];
     
 }
 
