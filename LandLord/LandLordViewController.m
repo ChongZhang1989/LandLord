@@ -14,12 +14,16 @@
 @interface LandLordViewController ()
 @property (nonatomic, strong) NSMutableArray *surroundings;
 @property (nonatomic, strong) NSString *username;
+@property CLLocationCoordinate2D buyloc1;
+@property CLLocationCoordinate2D buyloc2;
 @end
 
 @implementation LandLordViewController
 
 @synthesize surroundings = _surroundings;
 @synthesize username = _username;
+
+int cntBuyLoc = 0;
 
 int refresh = 0;
 
@@ -130,6 +134,24 @@ int refresh = 0;
 
 - (void)defaultPinsOnMap: (CLLocationCoordinate2D)location
 {
+	OrgPin *pin = [[OrgPin alloc] init];
+	[pin setCoordinate:location];
+	[self.mapView addAnnotation:pin];
+	if (!cntBuyLoc) {
+		cntBuyLoc++;
+		return;
+	}
+	cntBuyLoc = 0;
+	Land *land = [[Land alloc] init];
+	CLLocationCoordinate2D tmp;
+	tmp.latitude = MIN(self.buyloc1.latitude, self.buyloc2.latitude);
+	tmp.longitude = MAX(self.buyloc1.longitude, self.buyloc2.longitude);
+	land.upleft = tmp;
+	tmp.latitude = MAX(self.buyloc1.latitude, self.buyloc2.latitude);
+	tmp.longitude = MIN(self.buyloc1.longitude, self.buyloc2.longitude);
+	land.bottomright = tmp;
+	NSLog(@"put rec on map");
+	[self putRecOnMap:land];
 }
 
 - (void)longPress:(UILongPressGestureRecognizer*)gesture
@@ -138,6 +160,12 @@ int refresh = 0;
 		CGPoint touchPoint = [gesture locationInView:[self mapView]];
 		CLLocationCoordinate2D location = [self.mapView convertPoint:touchPoint toCoordinateFromView:self.mapView];
 		NSLog(@"lat = %f, long = %f", location.latitude, location.longitude);
+		if (cntBuyLoc == 0) {
+			self.buyloc1 = location;
+		} else {
+			self.buyloc2 = location;
+		}
+		[self defaultPinsOnMap:location];
 	}
 }
 
@@ -149,7 +177,6 @@ int refresh = 0;
 	}
 	UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPress:)];
 	[self.mapView addGestureRecognizer:longPress];
-    
 }
 
 @end
