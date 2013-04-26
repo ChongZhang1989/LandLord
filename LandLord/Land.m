@@ -11,5 +11,7 @@
 @implementation Land
 @synthesize upleft = _upleft;
 @synthesize bottomright = _bottomright;
+@synthesize type = _type;
+@synthesize owner = _owner;
 
 @end
