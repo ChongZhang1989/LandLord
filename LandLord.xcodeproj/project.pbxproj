@@ -325,7 +325,6 @@
 		0299A5EB1729D5B30010A0EA /* text bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 0299A5E91729D5B30010A0EA /* text bg.png */; };
 		0299A5EE1729DB9D0010A0EA /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0299A5ED1729DB9D0010A0EA /* TabBarController.m */; };
 		02EDED4B172AE05B00DDC60D /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02EDED4A172AE05B00DDC60D /* CoreLocation.framework */; };
-		02EDED4E172B288400DDC60D /* idObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 02EDED4D172B288400DDC60D /* idObject.m */; };
 		FA9B4B1F172A0B6C005D2BE5 /* MyPinView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9B4B1E172A0B6C005D2BE5 /* MyPinView.m */; };
 		FA9B4D7B172A0C8C005D2BE5 /* MapPin.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9B4D7A172A0C8C005D2BE5 /* MapPin.m */; };
 		FA9B4D7E172A23A3005D2BE5 /* OrgPin.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9B4D7D172A23A3005D2BE5 /* OrgPin.m */; };
@@ -658,8 +657,6 @@
 		0299A5EC1729DB9D0010A0EA /* TabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarController.h; sourceTree = "<group>"; };
 		0299A5ED1729DB9D0010A0EA /* TabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarController.m; sourceTree = "<group>"; };
 		02EDED4A172AE05B00DDC60D /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		02EDED4C172B288400DDC60D /* idObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = idObject.h; path = LandLord/idObject.h; sourceTree = SOURCE_ROOT; };
-		02EDED4D172B288400DDC60D /* idObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = idObject.m; path = LandLord/idObject.m; sourceTree = SOURCE_ROOT; };
 		FA9B4B1D172A0B6C005D2BE5 /* MyPinView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPinView.h; sourceTree = "<group>"; };
 		FA9B4B1E172A0B6C005D2BE5 /* MyPinView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPinView.m; sourceTree = "<group>"; };
 		FA9B4B21172A0BDA005D2BE5 /* 3d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3d.png; sourceTree = "<group>"; };
@@ -1042,8 +1039,6 @@
 		020158591727201F00AA98F6 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				02EDED4C172B288400DDC60D /* idObject.h */,
-				02EDED4D172B288400DDC60D /* idObject.m */,
 				0299A5E81729D5B30010A0EA /* iPhone Login.jpg */,
 				0299A5E91729D5B30010A0EA /* text bg.png */,
 				020158DC17277F5F00AA98F6 /* iconbeast lite - png */,
@@ -2052,7 +2047,6 @@
 				FA9B4D7B172A0C8C005D2BE5 /* MapPin.m in Sources */,
 				0225B53C172A12380065E993 /* Land.m in Sources */,
 				FA9B4D7E172A23A3005D2BE5 /* OrgPin.m in Sources */,
-				02EDED4E172B288400DDC60D /* idObject.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

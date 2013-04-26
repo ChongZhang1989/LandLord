@@ -9,7 +9,6 @@
 #import "LandLordViewController.h"
 #import "LandLordAppDelegate.h"
 #import "Land.h"
-#import "idObject.h"
 
 
 @interface LandLordViewController ()
@@ -20,8 +19,6 @@
 @property CLLocationCoordinate2D currBuyLoc;
 @property (nonatomic, strong) NSMutableArray *buypins;
 @property (nonatomic, strong) NSMutableArray *landlist;
-@property (nonatomic, strong) NSMutableArray *removePinid;
-@property (nonatomic, strong) NSMutableArray *removeRecid;
 @end
 
 @implementation LandLordViewController
@@ -30,8 +27,6 @@
 @synthesize username = _username;
 @synthesize buypins = _buypins;
 @synthesize landlist = _landlist;
-@synthesize removePinid = _removePinid;
-@synthesize removeRecid = _removeRecid;
 
 IBOutlet CLLocationManager *locationManager;
 id recid;
@@ -79,6 +74,8 @@ int refresh = 0;
 - (void)getSurroundings:(CLLocationCoordinate2D) location
 {
 	NSLog(@"get surroundings");
+	[_mapView removeAnnotations:[_mapView annotations]];
+	[_mapView removeOverlays:[_mapView overlays]];
 	[locationManager startUpdatingLocation];
 	MKCoordinateSpan span = MKCoordinateSpanMake(0.02, 0.02);
 	MKCoordinateRegion region = MKCoordinateRegionMake(locationManager.location.coordinate, span);
@@ -93,14 +90,6 @@ int refresh = 0;
         
         NSDictionary *jsonroot = [NSJSONSerialization JSONObjectWithData:surrJSON options:NSJSONReadingMutableContainers error:0];
         NSArray *results = [jsonroot objectForKey:@"results"];
-		for (idObject *r in _removePinid) {
-			[_mapView removeAnnotation:r.removeid];
-		}
-		for (idObject *r in _removeRecid) {
-			[_mapView removeOverlay:r.removeid];
-		}
-		[_removePinid removeAllObjects];
-		[_removeRecid removeAllObjects];
 		[_landlist removeAllObjects];
 		for (NSDictionary *result in results) {
 			Land *land = [[Land alloc] init];
@@ -152,7 +141,7 @@ int refresh = 0;
         MKPinAnnotationView *newPin = (MKPinAnnotationView *)[_mapView dequeueReusableAnnotationViewWithIdentifier:annotationIdentifier];
         [newPin setEnabled:YES];
         //[newPin setPinColor:MKPinAnnotationColorPurple];
-        [newPin setAnimatesDrop:YES];
+        //[newPin setAnimatesDrop:YES];
         return newPin;
     }
     
@@ -183,12 +172,6 @@ int refresh = 0;
 	p[3].longitude = p1.longitude;
 	MKPolygon *poly = [MKPolygon polygonWithCoordinates:p count:4];
 	[_mapView addOverlay:poly];
-	if (landindex >= 0) {
-		NSLog(@"put rec on map remove related");
-		idObject *tmp = [[idObject alloc] init];
-		tmp.removeid = [poly self];
-		[[self removeRecid] addObject:tmp];
-	}
 	return [poly self];
 }
 
@@ -198,9 +181,6 @@ int refresh = 0;
     [pin setTitle:@"This is a test"];
     [pin setCoordinate:location];
     [_mapView addAnnotation:pin];
-	idObject *tmp = [[idObject alloc] init];
-	tmp.removeid = [pin self];
-	[[self removePinid] addObject:tmp];
 }
 
 - (void)defaultPinsOnMap: (CLLocationCoordinate2D)location
