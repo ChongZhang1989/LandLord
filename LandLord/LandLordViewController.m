@@ -16,12 +16,15 @@
 @property (nonatomic, strong) NSString *username;
 @property CLLocationCoordinate2D buyloc1;
 @property CLLocationCoordinate2D buyloc2;
+@property CLLocationCoordinate2D currBuyLoc;
+@property (nonatomic, strong) NSMutableArray *buypins;
 @end
 
 @implementation LandLordViewController
 
 @synthesize surroundings = _surroundings;
 @synthesize username = _username;
+@synthesize buypins = _buypins;
 
 int cntBuyLoc = 0;
 
@@ -35,6 +38,7 @@ int refresh = 0;
     LandLordAppDelegate *delegate = (LandLordAppDelegate *)[[UIApplication sharedApplication] delegate];
     _username = delegate.username;
     NSLog(_username);
+    _buypins = [[NSMutableArray alloc] init];
 }
 
 - (void)didReceiveMemoryWarning
@@ -134,9 +138,11 @@ int refresh = 0;
 
 - (void)defaultPinsOnMap: (CLLocationCoordinate2D)location
 {
-	OrgPin *pin = [[OrgPin alloc] init];
+	NSLog(@"Get in");
+    OrgPin *pin = [[OrgPin alloc] init];
 	[pin setCoordinate:location];
 	[self.mapView addAnnotation:pin];
+    [_buypins addObject:[pin self]];
 	if (!cntBuyLoc) {
 		cntBuyLoc++;
 		return;
@@ -151,7 +157,40 @@ int refresh = 0;
 	tmp.longitude = MIN(self.buyloc1.longitude, self.buyloc2.longitude);
 	land.bottomright = tmp;
 	NSLog(@"put rec on map");
+    
 	[self putRecOnMap:land];
+}
+
+- (void)alertShow: (NSString *)title message:(NSString *)message button:(NSString *)button cancel:(NSString*) cancel
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:message delegate:self cancelButtonTitle:cancel otherButtonTitles:button,nil];
+    [alert show];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    NSLog(@"Let's see");
+    if (buttonIndex == 1){
+        if(cntBuyLoc == 0){
+            [self defaultPinsOnMap:self.currBuyLoc];
+            self.buyloc1 = self.currBuyLoc;
+        } else if(cntBuyLoc == 1) {
+            self.buyloc2 = self.currBuyLoc;
+            [self defaultPinsOnMap:self.currBuyLoc];
+            cntBuyLoc = 0;
+        }
+        NSLog(@"OK");
+    } else if(buttonIndex == 0) {
+        NSLog(@"Retry");
+        cntBuyLoc = 0;
+        NSMutableArray *herelist = [[NSMutableArray alloc] init];
+        NSArray *removelist = [NSArray arrayWithArray:_buypins];
+        NSArray *annlist = [_mapView annotations];
+        NSLog(@"The size is >>>>> %d", [_buypins count]);
+        for(id a in removelist){
+            [_mapView removeAnnotation:a];
+        }
+        //[_mapView removeAnnotations:];
+    }
 }
 
 - (void)longPress:(UILongPressGestureRecognizer*)gesture
@@ -159,13 +198,16 @@ int refresh = 0;
 	if (gesture.state == UIGestureRecognizerStateBegan) {
 		CGPoint touchPoint = [gesture locationInView:[self mapView]];
 		CLLocationCoordinate2D location = [self.mapView convertPoint:touchPoint toCoordinateFromView:self.mapView];
+        self.currBuyLoc = location;
 		NSLog(@"lat = %f, long = %f", location.latitude, location.longitude);
 		if (cntBuyLoc == 0) {
-			self.buyloc1 = location;
+            [self alertShow:@"Choose Land" message:@"Confirm this place as first point for your land?" button:@"OK" cancel:@"Retry"];
+            
 		} else {
-			self.buyloc2 = location;
+			[self alertShow:@"Choose Land" message:@"Confirm this place as second point for you land?" button:@"OK" cancel:@"Cancel"];
+            
 		}
-		[self defaultPinsOnMap:location];
+		
 	}
 }
 
