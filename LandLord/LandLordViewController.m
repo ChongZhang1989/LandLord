@@ -7,6 +7,7 @@
 //
 
 #import "LandLordViewController.h"
+#import "LandLordAppDelegate.h"
 
 @interface LandLordViewController ()
 @property (nonatomic, strong) NSMutableArray *surroundings;
@@ -45,6 +46,10 @@ int refresh = 0;
 		refresh = 1;
 		[self getSurroundings:[_mapView centerCoordinate]];
 	}
+    LandLordAppDelegate *delegate = (LandLordAppDelegate *)[[UIApplication sharedApplication] delegate];
+    NSLog(@"Start to get it");
+    NSLog(delegate.username);
+    NSLog(@"Yes I did");
 }
 
 @end
