@@ -156,10 +156,11 @@ int refresh = 0;
 	[self.mapView addAnnotation:pin];
     [_buypins addObject:[pin self]];
 	if (!cntBuyLoc) {
-		cntBuyLoc++;
+		//cntBuyLoc++;
+        self.buyloc1 = self.currBuyLoc;
 		return;
 	}
-	cntBuyLoc = 0;
+     self.buyloc2 = self.currBuyLoc;
 	Land *land = [[Land alloc] init];
 	CLLocationCoordinate2D tmp;
 	tmp.latitude = MIN(self.buyloc1.latitude, self.buyloc2.latitude);
@@ -180,20 +181,26 @@ int refresh = 0;
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if (buttonIndex == 1){
+        NSLog(@"OK");
         if(cntBuyLoc == 0){
-            [self defaultPinsOnMap:self.currBuyLoc];
-            self.buyloc1 = self.currBuyLoc;
+            cntBuyLoc++;
         } else if(cntBuyLoc == 1) {
-            self.buyloc2 = self.currBuyLoc;
-            [self defaultPinsOnMap:self.currBuyLoc];
+            //TODO Process purchase requirement
+            
+            //TODO and release the whole pin array
+            [self.buypins removeAllObjects];
             cntBuyLoc = 0;
         }
     } else if(buttonIndex == 0) {
-        cntBuyLoc = 0;
+        NSLog(@"retry");
+        
         NSArray *removelist = [NSArray arrayWithArray:_buypins];
         [_mapView removeAnnotations:removelist];
 		[self.buypins removeAllObjects];
+        if(cntBuyLoc == 1){
+            cntBuyLoc = 0;
 		[_mapView removeOverlay:recid];
+        }
     }
 }
 
@@ -205,10 +212,11 @@ int refresh = 0;
         self.currBuyLoc = location;
 		NSLog(@"lat = %f, long = %f", location.latitude, location.longitude);
 		if (cntBuyLoc == 0) {
+            [self defaultPinsOnMap:self.currBuyLoc];
             [self alertShow:@"Choose Land" message:@"Confirm this place as first point for your land?" button:@"OK" cancel:@"Retry"];
-            
 		} else {
-			[self alertShow:@"Choose Land" message:@"Confirm this place as second point for you land?" button:@"OK" cancel:@"Cancel"];
+            [self defaultPinsOnMap:self.currBuyLoc];
+			[self alertShow:@"Confirm Land" message:@"Confirm this area as the land you want?" button:@"OK" cancel:@"Cancel"];
             
 		}
 		
