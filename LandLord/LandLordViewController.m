@@ -9,6 +9,7 @@
 #import "LandLordViewController.h"
 #import "LandLordAppDelegate.h"
 #import "Land.h"
+#import "idObject.h"
 
 
 @interface LandLordViewController ()
@@ -18,6 +19,9 @@
 @property CLLocationCoordinate2D buyloc2;
 @property CLLocationCoordinate2D currBuyLoc;
 @property (nonatomic, strong) NSMutableArray *buypins;
+@property (nonatomic, strong) NSMutableArray *landlist;
+@property (nonatomic, strong) NSMutableArray *removePinid;
+@property (nonatomic, strong) NSMutableArray *removeRecid;
 @end
 
 @implementation LandLordViewController
@@ -25,9 +29,13 @@
 @synthesize surroundings = _surroundings;
 @synthesize username = _username;
 @synthesize buypins = _buypins;
+@synthesize landlist = _landlist;
+@synthesize removePinid = _removePinid;
+@synthesize removeRecid = _removeRecid;
 
 IBOutlet CLLocationManager *locationManager;
 id recid;
+
 
 int cntBuyLoc = 0;
 
@@ -41,7 +49,7 @@ int refresh = 0;
     locationManager.distanceFilter = kCLDistanceFilterNone; // whenever we move
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
 	
-	// Do any additional setup after loading the view, typically from a nib.
+	_landlist = [[NSMutableArray alloc] init];
 	[_mapView setDelegate:self];
     LandLordAppDelegate *delegate = (LandLordAppDelegate *)[[UIApplication sharedApplication] delegate];
     _username = delegate.username;
@@ -55,28 +63,65 @@ int refresh = 0;
     // Dispose of any resources that can be recreated.
 }
 
+- (void) showLand
+{
+	int i = 0;
+	for (Land *land in _landlist) {
+		CLLocationCoordinate2D center;
+		center.latitude = (land.upleft.latitude + land.bottomright.latitude) / 2;
+		center.longitude = (land.upleft.longitude + land.bottomright.longitude) / 2;
+		[self putPinsOnMap:center landindex:i];
+		[self putRecOnMap:land landindex:i];
+		i++;
+	}
+}
+
 - (void)getSurroundings:(CLLocationCoordinate2D) location
 {
+	NSLog(@"get surroundings");
 	[locationManager startUpdatingLocation];
 	MKCoordinateSpan span = MKCoordinateSpanMake(0.02, 0.02);
 	MKCoordinateRegion region = MKCoordinateRegionMake(locationManager.location.coordinate, span);
 	[_mapView setRegion:region];
 	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^
     {
-		NSString *urlstr = [NSString stringWithFormat:@"http://lordmap2k13.appspot.com/login?userId=fewafdf&userPwd=aefae"];
+		NSString *urlstr = [NSString stringWithFormat:@"http://lordmap2k13.appspot.com/getsurrounding?userId=%@&lat=%f&lng=%f", _username, locationManager.location.coordinate.latitude, locationManager.location.coordinate.longitude];
+		NSLog(urlstr);
         NSURL *surrurl = [NSURL URLWithString:urlstr];
         NSError *error = nil;
         NSData *surrJSON = [NSData dataWithContentsOfURL:surrurl options:0 error:&error];
         
         NSDictionary *jsonroot = [NSJSONSerialization JSONObjectWithData:surrJSON options:NSJSONReadingMutableContainers error:0];
-        
-        
+        NSArray *results = [jsonroot objectForKey:@"results"];
+		for (idObject *r in _removePinid) {
+			[_mapView removeAnnotation:r.removeid];
+		}
+		for (idObject *r in _removeRecid) {
+			[_mapView removeOverlay:r.removeid];
+		}
+		[_removePinid removeAllObjects];
+		[_removeRecid removeAllObjects];
+		[_landlist removeAllObjects];
+		for (NSDictionary *result in results) {
+			Land *land = [[Land alloc] init];
+			CLLocationCoordinate2D p;
+			p.latitude = [[result objectForKey:@"lat0"] floatValue];
+			p.longitude = [[result objectForKey:@"long0"] floatValue];
+			land.upleft = p;
+			p.latitude = [[result objectForKey:@"lat1"] floatValue];
+			p.longitude = [[result objectForKey:@"long1"] floatValue];
+			land.bottomright = p;
+			land.owner = [result objectForKey:@"owner"];
+			land.type = [result objectForKey:@"rel"];
+			[self.landlist addObject:land];
+		}
         //Add pins here in a new thread
-        
-        
-        
+		dispatch_async(dispatch_get_main_queue(), ^
+					   {
+						   [self showLand];
+					   });
     });
-    
+	
 }
 
 - (MKAnnotationView *)mapView:(MKMapView *)mv viewForAnnotation:(id <MKAnnotation>)annotation
@@ -106,7 +151,7 @@ int refresh = 0;
     {
         MKPinAnnotationView *newPin = (MKPinAnnotationView *)[_mapView dequeueReusableAnnotationViewWithIdentifier:annotationIdentifier];
         [newPin setEnabled:YES];
-        [newPin setPinColor:MKPinAnnotationColorPurple];
+        //[newPin setPinColor:MKPinAnnotationColorPurple];
         [newPin setAnimatesDrop:YES];
         return newPin;
     }
@@ -125,7 +170,7 @@ int refresh = 0;
 }
 
 
-- (id)putRecOnMap: (Land *) land
+- (id)putRecOnMap: (Land *) land landindex:(NSInteger) landindex
 {
 	CLLocationCoordinate2D p1 = land.upleft;
 	CLLocationCoordinate2D p2 = land.bottomright;
@@ -138,15 +183,24 @@ int refresh = 0;
 	p[3].longitude = p1.longitude;
 	MKPolygon *poly = [MKPolygon polygonWithCoordinates:p count:4];
 	[_mapView addOverlay:poly];
+	if (landindex >= 0) {
+		NSLog(@"put rec on map remove related");
+		idObject *tmp = [[idObject alloc] init];
+		tmp.removeid = [poly self];
+		[[self removeRecid] addObject:tmp];
+	}
 	return [poly self];
 }
 
--(void)putPinsOnMap: (CLLocationCoordinate2D)location
+-(void)putPinsOnMap: (CLLocationCoordinate2D)location landindex:(NSInteger) landindex
 {
     MapPin *pin = [[MapPin alloc] init];
     [pin setTitle:@"This is a test"];
     [pin setCoordinate:location];
     [_mapView addAnnotation:pin];
+	idObject *tmp = [[idObject alloc] init];
+	tmp.removeid = [pin self];
+	[[self removePinid] addObject:tmp];
 }
 
 - (void)defaultPinsOnMap: (CLLocationCoordinate2D)location
@@ -170,7 +224,7 @@ int refresh = 0;
 	tmp.longitude = MIN(self.buyloc1.longitude, self.buyloc2.longitude);
 	land.bottomright = tmp;
     
-	recid = [self putRecOnMap:land];
+	recid = [self putRecOnMap:land landindex:-1];
 }
 
 - (BOOL)purchaseLand
@@ -219,10 +273,14 @@ int refresh = 0;
         if(cntBuyLoc == 0){
             cntBuyLoc++;
         } else if(cntBuyLoc == 1) {
-            //TODO Process purchase requirement
 			[self purchaseLand];
-            //TODO and release the whole pin array
+			//remove selected area
+			[_mapView removeOverlay:recid];
+			NSArray *removelist = [NSArray arrayWithArray:_buypins];
+			[_mapView removeAnnotations:removelist];
             [self.buypins removeAllObjects];
+			
+			[self getSurroundings:[_mapView centerCoordinate]];
             cntBuyLoc = 0;
         }
     } else if(buttonIndex == 0) {

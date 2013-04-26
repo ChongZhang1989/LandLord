@@ -12,5 +12,10 @@
 @interface Land : NSObject
 @property CLLocationCoordinate2D upleft;
 @property CLLocationCoordinate2D bottomright;
+@property NSString *owner;
+@property NSString *type;
+@property double defence;
+@property id landid;
+@property id pinid;
 
 @end
