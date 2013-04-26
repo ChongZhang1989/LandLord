@@ -182,14 +182,9 @@ int refresh = 0;
     } else if(buttonIndex == 0) {
         NSLog(@"Retry");
         cntBuyLoc = 0;
-        NSMutableArray *herelist = [[NSMutableArray alloc] init];
         NSArray *removelist = [NSArray arrayWithArray:_buypins];
-        NSArray *annlist = [_mapView annotations];
-        NSLog(@"The size is >>>>> %d", [_buypins count]);
-        for(id a in removelist){
-            [_mapView removeAnnotation:a];
-        }
-        //[_mapView removeAnnotations:];
+        [_mapView removeAnnotations:removelist];
+		[self.buypins removeAllObjects];
     }
 }
 
