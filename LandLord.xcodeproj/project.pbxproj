@@ -324,6 +324,7 @@
 		0299A5EA1729D5B30010A0EA /* iPhone Login.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0299A5E81729D5B30010A0EA /* iPhone Login.jpg */; };
 		0299A5EB1729D5B30010A0EA /* text bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 0299A5E91729D5B30010A0EA /* text bg.png */; };
 		0299A5EE1729DB9D0010A0EA /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0299A5ED1729DB9D0010A0EA /* TabBarController.m */; };
+		02EDED4B172AE05B00DDC60D /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02EDED4A172AE05B00DDC60D /* CoreLocation.framework */; };
 		FA9B4B1F172A0B6C005D2BE5 /* MyPinView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9B4B1E172A0B6C005D2BE5 /* MyPinView.m */; };
 		FA9B4D7B172A0C8C005D2BE5 /* MapPin.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9B4D7A172A0C8C005D2BE5 /* MapPin.m */; };
 		FA9B4D7E172A23A3005D2BE5 /* OrgPin.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9B4D7D172A23A3005D2BE5 /* OrgPin.m */; };
@@ -655,6 +656,7 @@
 		0299A5E91729D5B30010A0EA /* text bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "text bg.png"; path = "../text bg.png"; sourceTree = "<group>"; };
 		0299A5EC1729DB9D0010A0EA /* TabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarController.h; sourceTree = "<group>"; };
 		0299A5ED1729DB9D0010A0EA /* TabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarController.m; sourceTree = "<group>"; };
+		02EDED4A172AE05B00DDC60D /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		FA9B4B1D172A0B6C005D2BE5 /* MyPinView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPinView.h; sourceTree = "<group>"; };
 		FA9B4B1E172A0B6C005D2BE5 /* MyPinView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPinView.m; sourceTree = "<group>"; };
 		FA9B4B21172A0BDA005D2BE5 /* 3d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3d.png; sourceTree = "<group>"; };
@@ -968,6 +970,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02EDED4B172AE05B00DDC60D /* CoreLocation.framework in Frameworks */,
 				020158A817276D2E00AA98F6 /* MapKit.framework in Frameworks */,
 				020158531727201F00AA98F6 /* UIKit.framework in Frameworks */,
 				020158551727201F00AA98F6 /* Foundation.framework in Frameworks */,
@@ -998,6 +1001,7 @@
 		020158511727201F00AA98F6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				02EDED4A172AE05B00DDC60D /* CoreLocation.framework */,
 				020158A717276D2E00AA98F6 /* MapKit.framework */,
 				020158521727201F00AA98F6 /* UIKit.framework */,
 				020158541727201F00AA98F6 /* Foundation.framework */,

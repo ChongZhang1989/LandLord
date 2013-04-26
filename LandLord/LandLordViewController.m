@@ -26,6 +26,9 @@
 @synthesize username = _username;
 @synthesize buypins = _buypins;
 
+IBOutlet CLLocationManager *locationManager;
+id recid;
+
 int cntBuyLoc = 0;
 
 int refresh = 0;
@@ -33,6 +36,11 @@ int refresh = 0;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+	//initilize locaiton manager
+	locationManager = [[CLLocationManager alloc] init];
+    locationManager.distanceFilter = kCLDistanceFilterNone; // whenever we move
+    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+	
 	// Do any additional setup after loading the view, typically from a nib.
 	[_mapView setDelegate:self];
     LandLordAppDelegate *delegate = (LandLordAppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -51,7 +59,11 @@ int refresh = 0;
 {
 	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^
     {
-        NSString *urlstr = [NSString stringWithFormat:@"http://lordmap2k13.appspot.com/login?userId=fewafdf&userPwd=aefae"];
+        [locationManager startUpdatingLocation];
+		MKCoordinateSpan span = MKCoordinateSpanMake(0.02, 0.02);
+		MKCoordinateRegion region = MKCoordinateRegionMake(locationManager.location.coordinate, span);
+		[_mapView setRegion:region];
+		NSString *urlstr = [NSString stringWithFormat:@"http://lordmap2k13.appspot.com/login?userId=fewafdf&userPwd=aefae"];
         NSURL *surrurl = [NSURL URLWithString:urlstr];
         NSError *error = nil;
         NSData *surrJSON = [NSData dataWithContentsOfURL:surrurl options:0 error:&error];
@@ -113,7 +125,7 @@ int refresh = 0;
 }
 
 
-- (void)putRecOnMap: (Land *) land
+- (id)putRecOnMap: (Land *) land
 {
 	CLLocationCoordinate2D p1 = land.upleft;
 	CLLocationCoordinate2D p2 = land.bottomright;
@@ -126,6 +138,7 @@ int refresh = 0;
 	p[3].longitude = p1.longitude;
 	MKPolygon *poly = [MKPolygon polygonWithCoordinates:p count:4];
 	[_mapView addOverlay:poly];
+	return [poly self];
 }
 
 -(void)putPinsOnMap: (CLLocationCoordinate2D)location
@@ -138,7 +151,6 @@ int refresh = 0;
 
 - (void)defaultPinsOnMap: (CLLocationCoordinate2D)location
 {
-	NSLog(@"Get in");
     OrgPin *pin = [[OrgPin alloc] init];
 	[pin setCoordinate:location];
 	[self.mapView addAnnotation:pin];
@@ -156,9 +168,8 @@ int refresh = 0;
 	tmp.latitude = MAX(self.buyloc1.latitude, self.buyloc2.latitude);
 	tmp.longitude = MIN(self.buyloc1.longitude, self.buyloc2.longitude);
 	land.bottomright = tmp;
-	NSLog(@"put rec on map");
     
-	[self putRecOnMap:land];
+	recid = [self putRecOnMap:land];
 }
 
 - (void)alertShow: (NSString *)title message:(NSString *)message button:(NSString *)button cancel:(NSString*) cancel
@@ -168,7 +179,6 @@ int refresh = 0;
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
-    NSLog(@"Let's see");
     if (buttonIndex == 1){
         if(cntBuyLoc == 0){
             [self defaultPinsOnMap:self.currBuyLoc];
@@ -178,13 +188,12 @@ int refresh = 0;
             [self defaultPinsOnMap:self.currBuyLoc];
             cntBuyLoc = 0;
         }
-        NSLog(@"OK");
     } else if(buttonIndex == 0) {
-        NSLog(@"Retry");
         cntBuyLoc = 0;
         NSArray *removelist = [NSArray arrayWithArray:_buypins];
         [_mapView removeAnnotations:removelist];
 		[self.buypins removeAllObjects];
+		[_mapView removeOverlay:recid];
     }
 }
 
