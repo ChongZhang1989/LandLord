@@ -57,12 +57,12 @@ int refresh = 0;
 
 - (void)getSurroundings:(CLLocationCoordinate2D) location
 {
+	[locationManager startUpdatingLocation];
+	MKCoordinateSpan span = MKCoordinateSpanMake(0.02, 0.02);
+	MKCoordinateRegion region = MKCoordinateRegionMake(locationManager.location.coordinate, span);
+	[_mapView setRegion:region];
 	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^
     {
-        [locationManager startUpdatingLocation];
-		MKCoordinateSpan span = MKCoordinateSpanMake(0.02, 0.02);
-		MKCoordinateRegion region = MKCoordinateRegionMake(locationManager.location.coordinate, span);
-		[_mapView setRegion:region];
 		NSString *urlstr = [NSString stringWithFormat:@"http://lordmap2k13.appspot.com/login?userId=fewafdf&userPwd=aefae"];
         NSURL *surrurl = [NSURL URLWithString:urlstr];
         NSError *error = nil;
@@ -173,6 +173,40 @@ int refresh = 0;
 	recid = [self putRecOnMap:land];
 }
 
+- (BOOL)purchaseLand
+{
+	Land *land = [[Land alloc] init];
+	CLLocationCoordinate2D tmp;
+	tmp.latitude = MIN(self.buyloc1.latitude, self.buyloc2.latitude);
+	tmp.longitude = MAX(self.buyloc1.longitude, self.buyloc2.longitude);
+	land.upleft = tmp;
+	tmp.latitude = MAX(self.buyloc1.latitude, self.buyloc2.latitude);
+	tmp.longitude = MIN(self.buyloc1.longitude, self.buyloc2.longitude);
+	land.bottomright = tmp;
+	NSString *urlstr = [NSString stringWithFormat:@"http://lordmap2k13.appspot.com/buyland?userId=%@&lat0=%f&long0=%f&lat1=%f&long1=%f", _username, land.upleft.latitude, land.upleft.longitude, land.bottomright.latitude, land.bottomright.longitude];
+	NSLog(urlstr);
+	NSURL *url = [NSURL URLWithString:urlstr];
+	NSError *error = nil;
+	NSData *placeData = [NSData dataWithContentsOfURL:url options:0 error:&error];
+	if (error) {
+		NSLog(@"error = %@", error);
+		NSLog(@"URL request error");
+		return NO;
+	}
+	NSError *jsonError = nil;
+	NSDictionary *result = [NSJSONSerialization JSONObjectWithData:placeData options:0 error:&jsonError];
+	if (jsonError) {
+		return NO;
+	}
+	NSString *res = [result objectForKey:@"result"];
+	NSLog(@"ret = %@", res);
+	if ([res isEqualToString:@"yes"]) {
+		return YES;
+	} else {
+		return NO;
+	}
+}
+
 - (void)alertShow: (NSString *)title message:(NSString *)message button:(NSString *)button cancel:(NSString*) cancel
 {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:message delegate:self cancelButtonTitle:cancel otherButtonTitles:button,nil];
@@ -186,14 +220,13 @@ int refresh = 0;
             cntBuyLoc++;
         } else if(cntBuyLoc == 1) {
             //TODO Process purchase requirement
-            
+			[self purchaseLand];
             //TODO and release the whole pin array
             [self.buypins removeAllObjects];
             cntBuyLoc = 0;
         }
     } else if(buttonIndex == 0) {
         NSLog(@"retry");
-        
         NSArray *removelist = [NSArray arrayWithArray:_buypins];
         [_mapView removeAnnotations:removelist];
 		[self.buypins removeAllObjects];
@@ -213,7 +246,7 @@ int refresh = 0;
 		NSLog(@"lat = %f, long = %f", location.latitude, location.longitude);
 		if (cntBuyLoc == 0) {
             [self defaultPinsOnMap:self.currBuyLoc];
-            [self alertShow:@"Choose Land" message:@"Confirm this place as first point for your land?" button:@"OK" cancel:@"Retry"];
+            [self alertShow:@"Choose Land" message:@"Confirm this place as first point for your land?" button:@"OK" cancel:@"Cancel"];
 		} else {
             [self defaultPinsOnMap:self.currBuyLoc];
 			[self alertShow:@"Confirm Land" message:@"Confirm this area as the land you want?" button:@"OK" cancel:@"Cancel"];
