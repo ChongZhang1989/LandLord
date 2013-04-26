@@ -15,5 +15,6 @@
 @property (nonatomic, strong) NSString *title, *subtitle, *time, *tweetID;
 @property CLLocationCoordinate2D coordinate;
 @property (nonatomic, strong) UIImage *image;
+@property (nonatomic, strong) NSString *type;
 
 @end
