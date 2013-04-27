@@ -248,13 +248,30 @@ int refresh = 0;
     [alert show];
 }
 
+- (void)confirmShow: (NSString *)title message:(NSString *)message button:(NSString *)button
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:button otherButtonTitles:nil];
+    [alert show];
+}
+
+
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if (buttonIndex == 1){
         NSLog(@"OK");
         if(cntBuyLoc == 0){
             cntBuyLoc++;
         } else if(cntBuyLoc == 1) {
-			[self purchaseLand];
+			Boolean res = [self purchaseLand];
+            if(res){
+                //Purchase successfully
+                NSLog(@"buy it successfully");
+                //Jump out message
+                [self confirmShow:@"Notification" message:@"You have successfully purchased this land" button:@"OK"];
+            } else {
+                //Purchase failed
+                NSLog(@"did not get the land");
+                [self confirmShow:@"Notification" message:@"Purchase failed, let's try another land" button:@"OK"];
+            }
 			//remove selected area
 			[_mapView removeOverlay:recid];
 			NSArray *removelist = [NSArray arrayWithArray:_buypins];
