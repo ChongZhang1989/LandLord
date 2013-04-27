@@ -320,6 +320,7 @@
 		02015B3317277F6100AA98F6 /* wooden-picket.png in Resources */ = {isa = PBXBuildFile; fileRef = 02015A0717277F6100AA98F6 /* wooden-picket.png */; };
 		02015B3417277F6100AA98F6 /* write.png in Resources */ = {isa = PBXBuildFile; fileRef = 02015A0817277F6100AA98F6 /* write.png */; };
 		0225B53C172A12380065E993 /* Land.m in Sources */ = {isa = PBXBuildFile; fileRef = 0225B53B172A12380065E993 /* Land.m */; };
+		02317232172B55D300E1376A /* MyLandViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02317231172B55D300E1376A /* MyLandViewController.m */; };
 		0299A5E71729B91B0010A0EA /* StartWindowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0299A5E61729B91B0010A0EA /* StartWindowViewController.m */; };
 		0299A5EA1729D5B30010A0EA /* iPhone Login.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0299A5E81729D5B30010A0EA /* iPhone Login.jpg */; };
 		0299A5EB1729D5B30010A0EA /* text bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 0299A5E91729D5B30010A0EA /* text bg.png */; };
@@ -650,6 +651,8 @@
 		02015A0817277F6100AA98F6 /* write.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = write.png; sourceTree = "<group>"; };
 		0225B53A172A12380065E993 /* Land.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Land.h; sourceTree = "<group>"; };
 		0225B53B172A12380065E993 /* Land.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Land.m; sourceTree = "<group>"; };
+		02317230172B55D300E1376A /* MyLandViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyLandViewController.h; sourceTree = "<group>"; };
+		02317231172B55D300E1376A /* MyLandViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyLandViewController.m; sourceTree = "<group>"; };
 		0299A5E51729B91B0010A0EA /* StartWindowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartWindowViewController.h; sourceTree = "<group>"; };
 		0299A5E61729B91B0010A0EA /* StartWindowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartWindowViewController.m; sourceTree = "<group>"; };
 		0299A5E81729D5B30010A0EA /* iPhone Login.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "iPhone Login.jpg"; path = "../iPhone Login.jpg"; sourceTree = "<group>"; };
@@ -1013,7 +1016,8 @@
 		020158581727201F00AA98F6 /* LandLord */ = {
 			isa = PBXGroup;
 			children = (
-				FA9B4B20172A0BDA005D2BE5 /* iconbeast lite - png */,
+				02317230172B55D300E1376A /* MyLandViewController.h */,
+				02317231172B55D300E1376A /* MyLandViewController.m */,
 				0299A5E51729B91B0010A0EA /* StartWindowViewController.h */,
 				0299A5E61729B91B0010A0EA /* StartWindowViewController.m */,
 				FA9B4D7C172A23A3005D2BE5 /* OrgPin.h */,
@@ -1025,6 +1029,7 @@
 				0201586A1727201F00AA98F6 /* MainStoryboard.storyboard */,
 				0201586D1727201F00AA98F6 /* LandLordViewController.h */,
 				0201586E1727201F00AA98F6 /* LandLordViewController.m */,
+				FA9B4B20172A0BDA005D2BE5 /* iconbeast lite - png */,
 				020158591727201F00AA98F6 /* Supporting Files */,
 				FA9B4B1D172A0B6C005D2BE5 /* MyPinView.h */,
 				FA9B4B1E172A0B6C005D2BE5 /* MyPinView.m */,
@@ -2047,6 +2052,7 @@
 				FA9B4D7B172A0C8C005D2BE5 /* MapPin.m in Sources */,
 				0225B53C172A12380065E993 /* Land.m in Sources */,
 				FA9B4D7E172A23A3005D2BE5 /* OrgPin.m in Sources */,
+				02317232172B55D300E1376A /* MyLandViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
