@@ -115,29 +115,31 @@ int refresh = 0;
 
 - (MKAnnotationView *)mapView:(MKMapView *)mv viewForAnnotation:(id <MKAnnotation>)annotation
 {
-    NSString *annotationIdentifier = @"LandPin";
-    MyPinView *pinView = (MyPinView *) [_mapView dequeueReusableAnnotationViewWithIdentifier:annotationIdentifier];
     if([annotation isKindOfClass:[MapPin class]])
     {
-    if(!pinView)
-    {
-        pinView = [[MyPinView alloc]
+        
+        NSString *annotationIdentifier = @"mappin";
+        MyPinView *pinView = (MyPinView *) [_mapView dequeueReusableAnnotationViewWithIdentifier:annotationIdentifier];
+        if(!pinView)
+        {
+            pinView = [[MyPinView alloc]
                    initWithAnnotation: annotation
                    reuseIdentifier:annotationIdentifier];
-        pinView.canShowCallout = YES;
-        UIImageView *houseIconView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Supporting Files/iconbeast lite - png/home.png"]];
-        [houseIconView setFrame:CGRectMake(0, 0, 30, 30)];
-        pinView.leftCalloutAccessoryView = houseIconView;
-        //[houseIconView release];
-    }
-    else{
-        pinView.annotation = annotation;
-    }
+            pinView.canShowCallout = YES;
+            UIImageView *houseIconView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Supporting Files/iconbeast lite - png/home.png"]];
+            [houseIconView setFrame:CGRectMake(0, 0, 30, 30)];
+            pinView.leftCalloutAccessoryView = houseIconView;
+            //[houseIconView release];
+        }
+        else{
+            pinView.annotation = annotation;
+        }
     
-    return pinView;
+        return pinView;
     }
     else if([annotation isKindOfClass:[OrgPin class]])
     {
+        NSString *annotationIdentifier = @"orgpin";
         MKPinAnnotationView *newPin = (MKPinAnnotationView *)[_mapView dequeueReusableAnnotationViewWithIdentifier:annotationIdentifier];
         [newPin setEnabled:YES];
         //[newPin setPinColor:MKPinAnnotationColorPurple];
