@@ -12,7 +12,7 @@
 
 @interface MapPin : NSObject<MKAnnotation>
 
-@property (nonatomic, strong) NSString *title, *subtitle, *time, *tweetID;
+@property (nonatomic, strong) NSString *title, *subtitle, *time;
 @property CLLocationCoordinate2D coordinate;
 @property (nonatomic, strong) UIImage *image;
 

@@ -321,6 +321,8 @@
 		02015B3417277F6100AA98F6 /* write.png in Resources */ = {isa = PBXBuildFile; fileRef = 02015A0817277F6100AA98F6 /* write.png */; };
 		0225B53C172A12380065E993 /* Land.m in Sources */ = {isa = PBXBuildFile; fileRef = 0225B53B172A12380065E993 /* Land.m */; };
 		02317232172B55D300E1376A /* MyLandViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02317231172B55D300E1376A /* MyLandViewController.m */; };
+		02317235172C537700E1376A /* StoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02317234172C537700E1376A /* StoreViewController.m */; };
+		02317238172C545A00E1376A /* Purchase.m in Sources */ = {isa = PBXBuildFile; fileRef = 02317237172C545A00E1376A /* Purchase.m */; };
 		0299A5E71729B91B0010A0EA /* StartWindowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0299A5E61729B91B0010A0EA /* StartWindowViewController.m */; };
 		0299A5EA1729D5B30010A0EA /* iPhone Login.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0299A5E81729D5B30010A0EA /* iPhone Login.jpg */; };
 		0299A5EB1729D5B30010A0EA /* text bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 0299A5E91729D5B30010A0EA /* text bg.png */; };
@@ -653,6 +655,10 @@
 		0225B53B172A12380065E993 /* Land.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Land.m; sourceTree = "<group>"; };
 		02317230172B55D300E1376A /* MyLandViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyLandViewController.h; sourceTree = "<group>"; };
 		02317231172B55D300E1376A /* MyLandViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyLandViewController.m; sourceTree = "<group>"; };
+		02317233172C537700E1376A /* StoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreViewController.h; sourceTree = "<group>"; };
+		02317234172C537700E1376A /* StoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreViewController.m; sourceTree = "<group>"; };
+		02317236172C545A00E1376A /* Purchase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Purchase.h; sourceTree = "<group>"; };
+		02317237172C545A00E1376A /* Purchase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Purchase.m; sourceTree = "<group>"; };
 		0299A5E51729B91B0010A0EA /* StartWindowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartWindowViewController.h; sourceTree = "<group>"; };
 		0299A5E61729B91B0010A0EA /* StartWindowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartWindowViewController.m; sourceTree = "<group>"; };
 		0299A5E81729D5B30010A0EA /* iPhone Login.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "iPhone Login.jpg"; path = "../iPhone Login.jpg"; sourceTree = "<group>"; };
@@ -1016,6 +1022,8 @@
 		020158581727201F00AA98F6 /* LandLord */ = {
 			isa = PBXGroup;
 			children = (
+				02317233172C537700E1376A /* StoreViewController.h */,
+				02317234172C537700E1376A /* StoreViewController.m */,
 				02317230172B55D300E1376A /* MyLandViewController.h */,
 				02317231172B55D300E1376A /* MyLandViewController.m */,
 				0299A5E51729B91B0010A0EA /* StartWindowViewController.h */,
@@ -1037,6 +1045,8 @@
 				FA9B4D7A172A0C8C005D2BE5 /* MapPin.m */,
 				0225B53A172A12380065E993 /* Land.h */,
 				0225B53B172A12380065E993 /* Land.m */,
+				02317236172C545A00E1376A /* Purchase.h */,
+				02317237172C545A00E1376A /* Purchase.m */,
 			);
 			path = LandLord;
 			sourceTree = "<group>";
@@ -2053,6 +2063,8 @@
 				0225B53C172A12380065E993 /* Land.m in Sources */,
 				FA9B4D7E172A23A3005D2BE5 /* OrgPin.m in Sources */,
 				02317232172B55D300E1376A /* MyLandViewController.m in Sources */,
+				02317235172C537700E1376A /* StoreViewController.m in Sources */,
+				02317238172C545A00E1376A /* Purchase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
