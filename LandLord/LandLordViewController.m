@@ -113,6 +113,19 @@ int refresh = 0;
 	
 }
 
+- (IBAction)tarbutton:(id)sender {
+    if([sender tag] == 1){
+        NSLog(@"get it pressed");
+        [self confirmShow:@"My Account Information" message:@"You have money" button:@"OK"];
+    }
+    else if([sender tag] == 2){
+        NSLog(@"refresh start");
+        CLLocationCoordinate2D location;
+        [self getSurroundings: location];
+    }
+    
+}
+
 - (MKAnnotationView *)mapView:(MKMapView *)mv viewForAnnotation:(id <MKAnnotation>)annotation
 {
     if([annotation isKindOfClass:[MapPin class]])
@@ -129,6 +142,7 @@ int refresh = 0;
             UIImageView *houseIconView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Supporting Files/iconbeast lite - png/home.png"]];
             [houseIconView setFrame:CGRectMake(0, 0, 30, 30)];
             pinView.leftCalloutAccessoryView = houseIconView;
+            [pinView setRightCalloutAccessoryView:[UIButton buttonWithType:UIButtonTypeDetailDisclosure]];
             //[houseIconView release];
         }
         else{
@@ -323,5 +337,15 @@ int refresh = 0;
 	UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPress:)];
 	[self.mapView addGestureRecognizer:longPress];
 }
+
+- (void)mapView:(MKMapView *) mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
+{
+    viewLandDetailViewController *dev = [[viewLandDetailViewController alloc] init];
+    NSLog(@"navi is %@",[self navigationController]);
+    dev.title = @"Try";
+    [[self navigationController] pushViewController: dev animated:YES];
+    
+}
+
 
 @end

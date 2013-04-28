@@ -331,6 +331,7 @@
 		FA9B4B1F172A0B6C005D2BE5 /* MyPinView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9B4B1E172A0B6C005D2BE5 /* MyPinView.m */; };
 		FA9B4D7B172A0C8C005D2BE5 /* MapPin.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9B4D7A172A0C8C005D2BE5 /* MapPin.m */; };
 		FA9B4D7E172A23A3005D2BE5 /* OrgPin.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9B4D7D172A23A3005D2BE5 /* OrgPin.m */; };
+		FA9FE3B3172C6CD300BFF86E /* viewLandDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9FE3B2172C6CD300BFF86E /* viewLandDetailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -972,6 +973,8 @@
 		FA9B4D7A172A0C8C005D2BE5 /* MapPin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapPin.m; sourceTree = "<group>"; };
 		FA9B4D7C172A23A3005D2BE5 /* OrgPin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OrgPin.h; path = "../iconbeast-lite/iconbeast lite - png/OrgPin.h"; sourceTree = "<group>"; };
 		FA9B4D7D172A23A3005D2BE5 /* OrgPin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OrgPin.m; path = "../iconbeast-lite/iconbeast lite - png/OrgPin.m"; sourceTree = "<group>"; };
+		FA9FE3B1172C6CD300BFF86E /* viewLandDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = viewLandDetailViewController.h; sourceTree = "<group>"; };
+		FA9FE3B2172C6CD300BFF86E /* viewLandDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = viewLandDetailViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1047,6 +1050,8 @@
 				0225B53B172A12380065E993 /* Land.m */,
 				02317236172C545A00E1376A /* Purchase.h */,
 				02317237172C545A00E1376A /* Purchase.m */,
+				FA9FE3B1172C6CD300BFF86E /* viewLandDetailViewController.h */,
+				FA9FE3B2172C6CD300BFF86E /* viewLandDetailViewController.m */,
 			);
 			path = LandLord;
 			sourceTree = "<group>";
@@ -2065,6 +2070,7 @@
 				02317232172B55D300E1376A /* MyLandViewController.m in Sources */,
 				02317235172C537700E1376A /* StoreViewController.m in Sources */,
 				02317238172C545A00E1376A /* Purchase.m in Sources */,
+				FA9FE3B3172C6CD300BFF86E /* viewLandDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
