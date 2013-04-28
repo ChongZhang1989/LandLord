@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "LandLordViewController.h"
 
+//UIKIT_EXTERN NSString *const IAPHelperProductPurchasedNotification;
+
 @interface MyLandViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate>
 
 @end

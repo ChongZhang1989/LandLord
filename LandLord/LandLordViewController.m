@@ -54,6 +54,36 @@ int refresh = 0;
     _buypins = [[NSMutableArray alloc] init];
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    NSLog(@"!!!!!!!!!!!!!!!!!Yes I get it when swithed");
+    //CLLocationCoordinate2D location;
+    // [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getNotification:) name:@"notification" object:nil];
+    LandLordAppDelegate *delegate2 = (LandLordAppDelegate *)[[UIApplication sharedApplication] delegate];
+    _currland = delegate2.currLand;
+    MKCoordinateSpan span = MKCoordinateSpanMake(0.02, 0.02);
+    if(_currland == nil){
+        NSLog(@">>>>>>>>>>>>>>This is NULL");
+        MKCoordinateRegion region = MKCoordinateRegionMake(locationManager.location.coordinate, span);
+        [_mapView setRegion:region];
+    } else {
+        NSLog(@"get something to focus on");
+        MKCoordinateRegion region = MKCoordinateRegionMake(_currland.upleft, span);
+        delegate2.currLand = nil;
+        [_mapView setRegion:region];
+    }
+
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+-(void)getNotification:(NSNotification *)notification
+{
+    NSLog(@"!!======!!!!!@@ I get the notification");
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -129,6 +159,7 @@ int refresh = 0;
 - (IBAction)tarbutton:(id)sender {
     if([sender tag] == 1){
         NSLog(@"get it pressed");
+        
         [self confirmShow:@"My Account Information" message:@"You have money" button:@"OK"];
     }
     else if([sender tag] == 2){

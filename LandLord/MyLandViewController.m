@@ -11,6 +11,8 @@
 #import "LandLordAppDelegate.h"
 //#import "viewLandDetailViewController.h"
 
+
+
 @interface MyLandViewController ()
 @property (nonatomic, strong) NSMutableArray *landlist;
 @property (nonatomic, strong) NSString *username;
@@ -35,6 +37,11 @@
     return self;
 }
 
+-(void) viewDidAppear:(BOOL)animated
+{
+    [self getData];
+	[self.tableView reloadData];
+}
 
 - (void)getData
 {
@@ -198,6 +205,7 @@
 
 #pragma mark - Table view delegate
 
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Navigation logic may go here. Create and push another view controller.
@@ -219,7 +227,9 @@
     LandLordViewController *tarView = [[LandLordViewController alloc] init];
     CLLocationCoordinate2D location;
     
+    NSString *t = @"This is a test notification message";
     
+    //[[NSNotificationCenter defaultCenter] postNotificationName:@"notification" object:t userInfo:nil];
     
     self.tabBarController.selectedViewController = [self.tabBarController.viewControllers objectAtIndex:0];
 }
