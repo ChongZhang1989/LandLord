@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LandLordViewController.h"
 
 @interface MyLandViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate>
 

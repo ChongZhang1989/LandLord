@@ -33,6 +33,7 @@
 	NSLog(@"username = %@", _username);
     LandLordAppDelegate *delegate = (LandLordAppDelegate *)[[UIApplication sharedApplication] delegate];
     delegate.username = _username;
+    NSLog(@"==========shuai===========");
 }
 
 - (void)didReceiveMemoryWarning

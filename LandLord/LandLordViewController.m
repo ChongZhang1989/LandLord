@@ -19,6 +19,7 @@
 @property CLLocationCoordinate2D currBuyLoc;
 @property (nonatomic, strong) NSMutableArray *buypins;
 @property (nonatomic, strong) NSMutableArray *landlist;
+@property (nonatomic, strong) Land *currland;
 @end
 
 @implementation LandLordViewController
@@ -43,11 +44,12 @@ int refresh = 0;
 	locationManager = [[CLLocationManager alloc] init];
     locationManager.distanceFilter = kCLDistanceFilterNone; // whenever we move
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-	
+
 	_landlist = [[NSMutableArray alloc] init];
 	[_mapView setDelegate:self];
     LandLordAppDelegate *delegate = (LandLordAppDelegate *)[[UIApplication sharedApplication] delegate];
     _username = delegate.username;
+    
     NSLog(_username);
     _buypins = [[NSMutableArray alloc] init];
 }
@@ -71,15 +73,26 @@ int refresh = 0;
 	}
 }
 
-- (void)getSurroundings:(CLLocationCoordinate2D) location
+- (void) getSurroundings:(CLLocationCoordinate2D) location
 {
 	NSLog(@"get surroundings");
+    LandLordAppDelegate *delegate2 = (LandLordAppDelegate *)[[UIApplication sharedApplication] delegate];
+    _currland = delegate2.currLand;
+    
 	[_mapView removeAnnotations:[_mapView annotations]];
 	[_mapView removeOverlays:[_mapView overlays]];
 	[locationManager startUpdatingLocation];
-	MKCoordinateSpan span = MKCoordinateSpanMake(0.02, 0.02);
-	MKCoordinateRegion region = MKCoordinateRegionMake(locationManager.location.coordinate, span);
-	[_mapView setRegion:region];
+    MKCoordinateSpan span = MKCoordinateSpanMake(0.02, 0.02);
+    if(_currland == nil){
+        NSLog(@">>>>>>>>>>>>>>This is NULL");
+        MKCoordinateRegion region = MKCoordinateRegionMake(locationManager.location.coordinate, span);
+        [_mapView setRegion:region];
+    } else {
+        NSLog(@"get something to focus on");
+        MKCoordinateRegion region = MKCoordinateRegionMake(_currland.upleft, span);
+        delegate2.currLand = nil;
+        [_mapView setRegion:region];
+    }
 	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^
     {
 		NSString *urlstr = [NSString stringWithFormat:@"http://lordmap2k13.appspot.com/getsurrounding?userId=%@&lat=%f&lng=%f", _username, locationManager.location.coordinate.latitude, locationManager.location.coordinate.longitude];

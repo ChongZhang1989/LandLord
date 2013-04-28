@@ -9,6 +9,7 @@
 #import "MyLandViewController.h"
 #import "Land.h"
 #import "LandLordAppDelegate.h"
+//#import "viewLandDetailViewController.h"
 
 @interface MyLandViewController ()
 @property (nonatomic, strong) NSMutableArray *landlist;
@@ -206,6 +207,21 @@
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
+    NSLog(@"select it");
+    LandLordAppDelegate *delegate = (LandLordAppDelegate *)[[UIApplication sharedApplication] delegate];
+    delegate.currLand = [_landlist objectAtIndex:[indexPath row]];
+    if(delegate.currLand == nil){
+        NSLog(@"Well, it does not work");
+        
+    } else {
+        NSLog(@"Yep, it works");
+    }
+    LandLordViewController *tarView = [[LandLordViewController alloc] init];
+    CLLocationCoordinate2D location;
+    
+    
+    
+    self.tabBarController.selectedViewController = [self.tabBarController.viewControllers objectAtIndex:0];
 }
 
 @end
