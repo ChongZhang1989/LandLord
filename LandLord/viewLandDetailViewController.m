@@ -24,7 +24,7 @@
     return self;
 }
 - (IBAction)ButtonPressed:(id)sender {
-    
+    NSLog(@"%@", [sender self]);
 }
 
 - (void)viewDidLoad
@@ -40,7 +40,7 @@
     test.frame = CGRectMake(10, 61+30, 106, 50);
     test.tag = 0;
     [test setTitle:@"RETWEET" forState:UIControlStateNormal];
-    [test addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [test addTarget:self action:@selector(ButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     
     [view addSubview:test];
     [self.view addSubview:view];
