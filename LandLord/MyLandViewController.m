@@ -188,6 +188,12 @@
     return YES;
 }
 */
+- (IBAction)refreshPressed:(id)sender
+{
+	[self getData];
+	[self.tableView reloadData];
+	//[self.view addSubview:self.tableView];
+}
 
 #pragma mark - Table view delegate
 
