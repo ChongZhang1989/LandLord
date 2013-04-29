@@ -35,7 +35,7 @@
 
 -(void) drawRect: (CGRect) rect
 {
-    [[UIImage imageNamed:@"camp.png"] drawInRect:CGRectMake(30, 30.0, 30.0, 30.0)];
+    [[UIImage imageNamed:@"castle_3.png"] drawInRect:CGRectMake(30, 30.0, 30.0, 30.0)];
     
 }
 
