@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Land.h"
+#import "MapPin.h"
+#import "LandLordAppDelegate.h"
 
 @interface viewLandDetailViewController : UIViewController
-
+@property (nonatomic, strong)Land *currland;
+@property (nonatomic, strong)MapPin *mappin;
+@property (nonatomic, strong)NSString *username;
 @end

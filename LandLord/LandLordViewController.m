@@ -20,6 +20,9 @@
 @property (nonatomic, strong) NSMutableArray *buypins;
 @property (nonatomic, strong) NSMutableArray *landlist;
 @property (nonatomic, strong) Land *currland;
+@property (nonatomic, strong) NSString *userMoney;
+@property (nonatomic, strong) NSString *attpoint;
+@property (nonatomic, strong) NSString *defendpoint;
 @end
 
 @implementation LandLordViewController
@@ -97,7 +100,7 @@ int refresh = 0;
 		CLLocationCoordinate2D center;
 		center.latitude = (land.upleft.latitude + land.bottomright.latitude) / 2;
 		center.longitude = (land.upleft.longitude + land.bottomright.longitude) / 2;
-		[self putPinsOnMap:center landindex:i];
+		[self putPinsOnMap:center landindex:i currland:land];
 		[self putRecOnMap:land landindex:i];
 		i++;
 	}
@@ -125,7 +128,27 @@ int refresh = 0;
     }
 	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^
     {
-		NSString *urlstr = [NSString stringWithFormat:@"http://lordmap2k13.appspot.com/getsurrounding?userId=%@&lat=%f&lng=%f", _username, locationManager.location.coordinate.latitude, locationManager.location.coordinate.longitude];
+		//Get user information
+        NSString *userurlstr = [NSString stringWithFormat:@"http://lordmap2k13.appspot.com/getuserinfo?userId=%@", _username];
+        NSURL *userurl = [NSURL URLWithString:userurlstr];
+        NSError *erroruser = nil;
+        NSData *userJSON = [NSData dataWithContentsOfURL:userurl];
+        NSDictionary *jsonrootuser = [NSJSONSerialization JSONObjectWithData:userJSON options: NSJSONReadingMutableContainers error:0];
+        NSArray *landsuser = [jsonrootuser objectForKey:@"lands"];
+        NSDictionary *landfirst = [landsuser objectAtIndex:0];
+        //_defendpoint = [NSString stringWithFormat:@"%d", (NSString *)[landfirst objectForKey:@"defence"]];
+        _defendpoint = (NSString *)[landfirst objectForKey:@"defence"];
+        NSDictionary *userInforRoot = [jsonrootuser objectForKey:@"userInfo"];
+        //_userMoney = [NSString stringWithFormat:@"%d", (int)[userInforRoot objectForKey:@"userMoney"]];
+        //_attpoint = [NSString stringWithFormat:@"%d", (int)[userInforRoot objectForKey:@"userAtt"]];
+        _userMoney = (NSString *)[userInforRoot objectForKey:@"userMoney"];
+        _attpoint = (NSString *)[userInforRoot objectForKey:@"userAtk"];
+        
+        
+        NSLog(@"Have money %@, attack %@, defend %@", _userMoney, _attpoint, _defendpoint);
+        
+        //Get surrounding points
+        NSString *urlstr = [NSString stringWithFormat:@"http://lordmap2k13.appspot.com/getsurrounding?userId=%@&lat=%f&lng=%f", _username, locationManager.location.coordinate.latitude, locationManager.location.coordinate.longitude];
 		NSLog(urlstr);
         NSURL *surrurl = [NSURL URLWithString:urlstr];
         NSError *error = nil;
@@ -160,7 +183,7 @@ int refresh = 0;
     if([sender tag] == 1){
         NSLog(@"get it pressed");
         
-        [self confirmShow:@"My Account Information" message:@"You have money" button:@"OK"];
+        [self confirmShow:@"My Account Information" message:[NSString stringWithFormat:@"You have money: %@,\n defend poins: %@, \nattack point: %@", _userMoney, _defendpoint, _attpoint] button:@"OK"];
     }
     else if([sender tag] == 2){
         NSLog(@"refresh start");
@@ -230,16 +253,30 @@ int refresh = 0;
 	p[1].longitude = p2.longitude;
 	p[3].latitude = p2.latitude;
 	p[3].longitude = p1.longitude;
-	MKPolygon *poly = [MKPolygon polygonWithCoordinates:p count:4];
+    MKPolygon *poly = [MKPolygon polygonWithCoordinates:p count:4];
+    
+    Land *tmpLand = [_landlist objectAtIndex:landindex];
+    NSString *rel = tmpLand.type;
+    if([rel isEqualToString:@"own"]){
+        
+    } else if([rel isEqualToString:@"friend"]) {
+        
+    } else {
+        
+    }
+
+    
 	[_mapView addOverlay:poly];
 	return [poly self];
 }
 
--(void)putPinsOnMap: (CLLocationCoordinate2D)location landindex:(NSInteger) landindex
+-(void)putPinsOnMap: (CLLocationCoordinate2D)location landindex:(NSInteger) landindex currland:(Land *)currland
 {
     MapPin *pin = [[MapPin alloc] init];
-    [pin setTitle:@"This is a test"];
+    NSString *pintitle = [NSString stringWithFormat:@"%@'s land", currland.owner];
+    [pin setTitle:pintitle];
     [pin setCoordinate:location];
+    [pin setCurrLand:currland];
     [_mapView addAnnotation:pin];
 }
 
@@ -387,6 +424,7 @@ int refresh = 0;
     viewLandDetailViewController *dev = [[viewLandDetailViewController alloc] init];
     NSLog(@"navi is %@",[self navigationController]);
     dev.title = @"Try";
+    dev.mappin = view.annotation;
     [[self navigationController] pushViewController: dev animated:YES];
     
 }

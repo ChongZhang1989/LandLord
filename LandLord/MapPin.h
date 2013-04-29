@@ -9,12 +9,13 @@
 #import <Foundation/Foundation.h>
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
+#import "Land.h"
 
 @interface MapPin : NSObject<MKAnnotation>
 
 @property (nonatomic, strong) NSString *title, *subtitle, *time;
 @property CLLocationCoordinate2D coordinate;
 @property (nonatomic, strong) UIImage *image;
-
+@property (nonatomic, strong) Land *currLand;
 
 @end
