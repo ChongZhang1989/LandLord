@@ -12,6 +12,8 @@
 #import "MapPin.h"
 #import "OrgPin.h"
 #import "viewLandDetailViewController.h"
+#import "ownRec.h"
+#import "friendRec.h"
 
 @interface LandLordViewController : UIViewController<MKMapViewDelegate>
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;

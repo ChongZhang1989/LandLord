@@ -135,9 +135,15 @@ int refresh = 0;
         NSData *userJSON = [NSData dataWithContentsOfURL:userurl];
         NSDictionary *jsonrootuser = [NSJSONSerialization JSONObjectWithData:userJSON options: NSJSONReadingMutableContainers error:0];
         NSArray *landsuser = [jsonrootuser objectForKey:@"lands"];
+        NSLog(@"try to get defend points");
+        if([landsuser count] == 0){
+            _defendpoint = 0;
+        } else {
         NSDictionary *landfirst = [landsuser objectAtIndex:0];
         //_defendpoint = [NSString stringWithFormat:@"%d", (NSString *)[landfirst objectForKey:@"defence"]];
         _defendpoint = (NSString *)[landfirst objectForKey:@"defence"];
+        }
+        NSLog(@"Got defend points");
         NSDictionary *userInforRoot = [jsonrootuser objectForKey:@"userInfo"];
         //_userMoney = [NSString stringWithFormat:@"%d", (int)[userInforRoot objectForKey:@"userMoney"]];
         //_attpoint = [NSString stringWithFormat:@"%d", (int)[userInforRoot objectForKey:@"userAtt"]];
@@ -155,6 +161,7 @@ int refresh = 0;
         NSData *surrJSON = [NSData dataWithContentsOfURL:surrurl options:0 error:&error];
         
         NSDictionary *jsonroot = [NSJSONSerialization JSONObjectWithData:surrJSON options:NSJSONReadingMutableContainers error:0];
+        
         NSArray *results = [jsonroot objectForKey:@"results"];
 		[_landlist removeAllObjects];
 		for (NSDictionary *result in results) {
@@ -234,10 +241,30 @@ int refresh = 0;
 
 - (MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id <MKOverlay>)overlay
 {
+    NSLog(@"set view");
+    MKPolygon *d = (MKPolygon *) overlay;
+    
     MKPolygonView *polygonView = [[MKPolygonView alloc] initWithPolygon:overlay];
 	polygonView.lineWidth = 0;
+    
+    if([d.title isEqualToString:@"own"]){
+        NSLog(@"own color");
+        polygonView.fillColor = [[UIColor greenColor] colorWithAlphaComponent: 0.5];
+    }
+    else if([d.title isEqualToString:@"friend"]){
+        NSLog(@"friend color");
+        polygonView.fillColor = [[UIColor purpleColor] colorWithAlphaComponent: 0.5];
+    }
+    else if([d.title isEqualToString:@"tmp"]){
+        NSLog(@"to buy color");
+        polygonView.fillColor = [[UIColor yellowColor] colorWithAlphaComponent:0.5];
+    }
+    else {
+        NSLog(@"no one's land");
+        polygonView.fillColor = [[UIColor redColor] colorWithAlphaComponent: 0.5];
+    }
     polygonView.strokeColor = [UIColor clearColor];
-    polygonView.fillColor = [[UIColor redColor] colorWithAlphaComponent: 0.5];
+    
     return polygonView;
 }
 
@@ -253,21 +280,32 @@ int refresh = 0;
 	p[1].longitude = p2.longitude;
 	p[3].latitude = p2.latitude;
 	p[3].longitude = p1.longitude;
-    MKPolygon *poly = [MKPolygon polygonWithCoordinates:p count:4];
-    
+    if(landindex == -1){
+        MKPolygon *poly = [MKPolygon polygonWithCoordinates:p count:4];
+        poly.title = @"tmp";
+        [_mapView addOverlay:poly];
+        return [poly self];
+
+    }
     Land *tmpLand = [_landlist objectAtIndex:landindex];
     NSString *rel = tmpLand.type;
     if([rel isEqualToString:@"own"]){
-        
+        NSLog(@"=!!=====!!!!MY OWN LAND");
+        ownRec *poly = [ownRec polygonWithCoordinates:p count:4];
+        poly.title = @"own";
+        [_mapView addOverlay:poly];
+        return [poly self];
     } else if([rel isEqualToString:@"friend"]) {
-        
+        friendRec *poly = [friendRec polygonWithCoordinates:p count:4];
+        poly.title = @"friend";
+        [_mapView addOverlay:poly];
+        return [poly self];
     } else {
-        
+        NSLog(@"NO ONE");
+        MKPolygon *poly = [MKPolygon polygonWithCoordinates:p count:4];
+        [_mapView addOverlay:poly];
+        return [poly self];
     }
-
-    
-	[_mapView addOverlay:poly];
-	return [poly self];
 }
 
 -(void)putPinsOnMap: (CLLocationCoordinate2D)location landindex:(NSInteger) landindex currland:(Land *)currland
@@ -306,7 +344,8 @@ int refresh = 0;
 
 - (BOOL)purchaseLand
 {
-	Land *land = [[Land alloc] init];
+	NSLog(@"Start to purchase land");
+    Land *land = [[Land alloc] init];
 	CLLocationCoordinate2D tmp;
 	tmp.latitude = MIN(self.buyloc1.latitude, self.buyloc2.latitude);
 	tmp.longitude = MAX(self.buyloc1.longitude, self.buyloc2.longitude);
@@ -401,9 +440,10 @@ int refresh = 0;
             [self defaultPinsOnMap:self.currBuyLoc];
             [self alertShow:@"Choose Land" message:@"Confirm this place as first point for your land?" button:@"OK" cancel:@"Cancel"];
 		} else {
+            NSLog(@"To confirm it");
             [self defaultPinsOnMap:self.currBuyLoc];
 			[self alertShow:@"Confirm Land" message:@"Confirm this area as the land you want?" button:@"OK" cancel:@"Cancel"];
-            
+            NSLog(@"Confirmed buy");
 		}
 		
 	}
