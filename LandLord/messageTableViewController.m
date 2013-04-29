@@ -24,12 +24,16 @@
     if (self) {
         // Custom initialization
     }
+   
     return self;
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.tableView.dataSource = self;
+	self.tableView.delegate = self;
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -43,11 +47,14 @@
     _pendingfri = [[NSMutableArray alloc] init];
     _pendingtask = [[NSMutableArray alloc] init];
     _atkmsg = [[NSMutableArray alloc] init];
+    
 }
 
 -(void)viewDidAppear:(BOOL)animated
 {
     NSLog(@"Yes I wanna see my messages");
+     [self getData];
+    [self.tableView reloadData];
 }
 
 - (void)getData
@@ -57,7 +64,8 @@
     [_pendingtask removeAllObjects];
     [_pendingfri removeAllObjects];
     
-	NSString *urlstr = [NSString stringWithFormat:@"http://lordmap2k13.appspot.com/showland?userId=%@", _username];
+	NSString *urlstr = [NSString stringWithFormat:@"http://lordmap2k13.appspot.com/showrequests?userId=%@", _username];
+
 	NSLog(urlstr);
 	NSURL *surrurl = [NSURL URLWithString:urlstr];
 	NSError *error = nil;
@@ -67,8 +75,13 @@
 	NSArray *results = [jsonroot objectForKey:@"results"];
 	for (NSDictionary *result in results) {
 		messageObject *msgobj = [[messageObject alloc] init];
-		
+        NSString *name = [result objectForKey:@"friend"];
+		msgobj.msgtype = @"fri";
+        msgobj.msgcontent = [NSString stringWithFormat:@"%@ wants to add you as a friend", name];
+        msgobj.counterpart = name;
+        [_pendingfri addObject:msgobj];
 		[_showlist addObject:msgobj];
+        NSLog(msgobj.msgcontent);
         //		dispatch_async(dispatch_get_main_queue(),^ {
         //		CLGeocoder *geocoder = [[CLGeocoder alloc] init];
         //		CLLocation *tmp = [[CLLocation alloc] initWithLatitude:p.latitude longitude:p.longitude];
@@ -115,19 +128,21 @@
 }
 
 #pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
-}
+//
+//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+//{
+//#warning Potentially incomplete method implementation.
+//    // Return the number of sections.
+//    return 0;
+//}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 #warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    //return 0;
+    NSLog(@"implmented?");
+    return [_showlist count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -136,8 +151,20 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
+    if (cell == nil) {
+		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
+	}
     
+    messageObject *tmp = [_showlist objectAtIndex:indexPath.row];
+    
+    if([tmp.msgtype isEqualToString:@"fri"]){
+        cell.textLabel.text = [NSString stringWithFormat:@"Friend Invitation from %@", tmp.counterpart];
+    }
+    
+	//cell.textLabel.text = [NSString stringWithFormat:@"%@",indexPath.row, ];
+	//NSLog(cell.textLabel.text);
     return cell;
+
 }
 
 /*
@@ -179,6 +206,20 @@
 }
 */
 
+- (void)alertShow: (NSString *)title message:(NSString *)message button:(NSString *)button cancel:(NSString*) cancel
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:message delegate:self cancelButtonTitle:cancel otherButtonTitles:button,nil];
+    [alert show];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex == 1){
+        NSLog(@"OK");
+    } else if (buttonIndex == 0){
+        NSLog(@"cancel");
+    }
+}
+
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -190,6 +231,13 @@
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
+    messageObject *tmp = [_showlist objectAtIndex:indexPath.row];
+    
+    if([tmp.msgtype isEqualToString:@"fri"]){
+        [self alertShow:@"Friend Invitation" message:tmp.msgcontent button:@"OK" cancel:@"No, thanks"];
+    }
+
+    //NSLog(@"selected");
 }
 
 @end

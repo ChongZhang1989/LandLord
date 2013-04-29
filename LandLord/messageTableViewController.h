@@ -10,6 +10,6 @@
 #import "messageObject.h"
 #import "LandLordAppDelegate.h"
 
-@interface messageTableViewController : UITableViewController
+@interface messageTableViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate>
 
 @end

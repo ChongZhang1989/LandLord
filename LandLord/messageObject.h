@@ -12,4 +12,5 @@
 @property (nonatomic, strong) NSString *msgtype;
 @property (nonatomic, strong) NSString *msgcontent;
 @property (nonatomic, strong) NSString *localindex;
+@property (nonatomic, strong) NSString *counterpart;
 @end
