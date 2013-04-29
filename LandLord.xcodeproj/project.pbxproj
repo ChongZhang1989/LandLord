@@ -328,6 +328,7 @@
 		0299A5EB1729D5B30010A0EA /* text bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 0299A5E91729D5B30010A0EA /* text bg.png */; };
 		0299A5EE1729DB9D0010A0EA /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0299A5ED1729DB9D0010A0EA /* TabBarController.m */; };
 		02EDED4B172AE05B00DDC60D /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02EDED4A172AE05B00DDC60D /* CoreLocation.framework */; };
+		02F1AAA1172ED19800E1178B /* MyFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02F1AAA0172ED19800E1178B /* MyFriendViewController.m */; };
 		FA9B4B1F172A0B6C005D2BE5 /* MyPinView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9B4B1E172A0B6C005D2BE5 /* MyPinView.m */; };
 		FA9B4D7B172A0C8C005D2BE5 /* MapPin.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9B4D7A172A0C8C005D2BE5 /* MapPin.m */; };
 		FA9B4D7E172A23A3005D2BE5 /* OrgPin.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9B4D7D172A23A3005D2BE5 /* OrgPin.m */; };
@@ -669,6 +670,8 @@
 		0299A5EC1729DB9D0010A0EA /* TabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarController.h; sourceTree = "<group>"; };
 		0299A5ED1729DB9D0010A0EA /* TabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarController.m; sourceTree = "<group>"; };
 		02EDED4A172AE05B00DDC60D /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		02F1AA9F172ED19800E1178B /* MyFriendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyFriendViewController.h; path = ../MyFriendViewController.h; sourceTree = "<group>"; };
+		02F1AAA0172ED19800E1178B /* MyFriendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyFriendViewController.m; path = ../MyFriendViewController.m; sourceTree = "<group>"; };
 		FA9B4B1D172A0B6C005D2BE5 /* MyPinView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPinView.h; sourceTree = "<group>"; };
 		FA9B4B1E172A0B6C005D2BE5 /* MyPinView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPinView.m; sourceTree = "<group>"; };
 		FA9B4B21172A0BDA005D2BE5 /* 3d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3d.png; sourceTree = "<group>"; };
@@ -1031,6 +1034,8 @@
 		020158581727201F00AA98F6 /* LandLord */ = {
 			isa = PBXGroup;
 			children = (
+				02F1AA9F172ED19800E1178B /* MyFriendViewController.h */,
+				02F1AAA0172ED19800E1178B /* MyFriendViewController.m */,
 				02317233172C537700E1376A /* StoreViewController.h */,
 				02317234172C537700E1376A /* StoreViewController.m */,
 				02317230172B55D300E1376A /* MyLandViewController.h */,
@@ -2083,6 +2088,7 @@
 				FA9FE3B3172C6CD300BFF86E /* viewLandDetailViewController.m in Sources */,
 				FAEBBFE9172E200900C97822 /* ownRec.m in Sources */,
 				FAEBBFEC172E202000C97822 /* friendRec.m in Sources */,
+				02F1AAA1172ED19800E1178B /* MyFriendViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
