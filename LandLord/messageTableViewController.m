@@ -117,6 +117,11 @@
         //									   NSLog(@"hello");
         //								   }];
 	}
+    
+    //Load attack message
+    //NSString *atkurlstr = [NSString stringWithFormat:@"<#string#>"]
+    
+    
 	NSLog(@"end");
 }
 
