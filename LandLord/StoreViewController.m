@@ -7,10 +7,11 @@
 //
 
 #import "StoreViewController.h"
-#import "Purchase.h"
+
 
 @interface StoreViewController ()
 @property (nonatomic, strong) NSMutableArray *purchaseItem;
+@property (nonatomic, strong) NSMutableArray *iteminfolist;
 @end
 
 @implementation StoreViewController
@@ -25,6 +26,29 @@
     return self;
 }
 
+-(void)additeminfo
+{
+    NSString *t1 = @"This a sword from a family with long history fighting with thier enemies and standing with courage";
+    [_iteminfolist addObject:t1];
+    NSString *t2 = @"A weapon made for a general who never lose a war";
+    [_iteminfolist addObject:t2];
+    NSString *t3 = @"This is the hammer of Thor, the great god of thunder, lightning, storms, oak trees, strength, the son of the god of god";
+    [_iteminfolist addObject:t3];
+    NSString *t4 = @"This is the weapon of Mars, the great god of war";
+    [_iteminfolist addObject:t4];
+    NSString *t5 = @"This weapon belongs to Zsus, the great god of the world, the god of god";
+    [_iteminfolist addObject:t5];
+    NSString *t6 = @"A low and normal wall which could stop some enemies";
+    [_iteminfolist addObject:t6];
+    NSString *t7 = @"A small house with strong walls and solid structure";
+    [_iteminfolist addObject:t7];
+    NSString *t8 = @"This used to be the home of Duke Shane, the great hero of Rohan. It is small but beautiful castle with high walls";
+    [_iteminfolist addObject:t8];
+    NSString *t9 = @"Home of Gandalf, a castle flying in the sky";
+    [_iteminfolist addObject:t9];
+    NSString *t10 = @"The city of city, the city of king, the city of Aragorn";
+    [_iteminfolist addObject:t10];
+}
 - (void)getItem
 {
 	NSString *itemurlstr = @"http://lordmap2k13.appspot.com/getinventory";
@@ -32,9 +56,10 @@
     NSData *data = [NSData dataWithContentsOfURL:itemurl];
     NSError *error;
     NSDictionary *jsonroot = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
+    NSArray *infolist = [NSArray arrayWithArray:_iteminfolist];
     
     NSArray *jsonitemlist = [jsonroot objectForKey:@"results"];
-    
+    int i = 0;
     for(NSDictionary *result in jsonitemlist){
         itemObj *currobj = [[itemObj alloc] init];
         currobj.index = (NSString *)[result objectForKey: @"index"];
@@ -42,8 +67,22 @@
         currobj.atkPoint = (NSString *)[result objectForKey:@"atkPoint"];
         currobj.name = (NSString *)[result objectForKey:@"name"];
         currobj.defPoint = (NSString *)[result objectForKey:@"defPoint"];
+        currobj.imagename = [NSString stringWithFormat:@"%@.png", currobj.index];
+        NSLog(@"try to take item info");
+        currobj.iteminfo = [infolist objectAtIndex:i];
+        NSLog(@"%@",currobj.iteminfo);
         [_purchaseItem addObject:currobj];
+        i++;
     }
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"itemdetail"]) {
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        itemDetailViewController *destViewController = segue.destinationViewController;
+        destViewController.itemobj = [_purchaseItem objectAtIndex:indexPath.row];
+    }
+}
     
 //    Purchase *tmp = [[Purchase alloc] init];
 //	tmp.name = [[NSString alloc] init];
@@ -53,7 +92,7 @@
 //	tmp.name = [[NSString alloc] init];
 //	tmp.name = @"Wall2";
 //	[_purchaseItem addObject:tmp];
-}
+
 - (IBAction)pressButton:(id)sender
 {
 	NSLog(@"%d",[self.tableView indexPathForSelectedRow].row);
@@ -63,14 +102,17 @@
 {
     [super viewDidLoad];
 	_purchaseItem = [[NSMutableArray alloc] init];
+    _iteminfolist = [[NSMutableArray alloc] init];
 	self.tableView.dataSource = self;
 	self.tableView.delegate = self;
+    [self additeminfo];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 	[self getItem];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -107,7 +149,8 @@
 	NSLog(@"%d, %@",indexPath.row, [_purchaseItem objectAtIndex:indexPath.row]);
 	NSLog(@"%d", indexPath.row);
 	NSLog(@"called 1!");
-	Purchase *tmp = [_purchaseItem objectAtIndex:indexPath.row];
+	itemObj *tmp = [_purchaseItem objectAtIndex:indexPath.row];
+    cell.imageView.image = [UIImage imageNamed:tmp.imagename];
 	cell.textLabel.text = tmp.name;
     return cell;
 }
@@ -151,6 +194,14 @@
 }
 */
 
+
+- (void)alertShow: (NSString *)title message:(NSString *)message button:(NSString *)button cancel:(NSString*) cancel
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:message delegate:self cancelButtonTitle:cancel otherButtonTitles:button,nil];
+    [alert show];
+}
+
+
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -162,6 +213,9 @@
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
+    //itemDetailViewController *dev = [[itemDetailViewController alloc] init];
+    //[[self navigationController] pushViewController: dev animated:YES];
+
 }
 
 @end

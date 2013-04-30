@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "itemObj.h"
+#import "itemDetailViewController.h"
+#import "Purchase.h"
+		
 
 @interface StoreViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate>
 

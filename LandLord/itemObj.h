@@ -14,4 +14,6 @@
 @property (nonatomic, strong) NSString *atkPoint;
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *defPoint;
+@property (nonatomic, strong) NSString *imagename;
+@property (nonatomic, strong) NSString *iteminfo;
 @end

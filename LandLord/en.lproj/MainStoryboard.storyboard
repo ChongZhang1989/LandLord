@@ -283,14 +283,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="kHF-q3-LJ2">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="detailDisclosureButton" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="kHF-q3-LJ2">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <connections>
+                                    <segue destination="JMR-wt-C8T" kind="push" identifier="itemdetail" id="Tro-0s-EdM"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -303,6 +306,53 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oaN-Pp-hxA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="966" y="442"/>
+        </scene>
+        <!--Item Detail View Controller-->
+        <scene sceneID="euI-PK-c6c">
+            <objects>
+                <viewController id="JMR-wt-C8T" customClass="itemDetailViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="LIr-BY-Cmr">
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="itembackground.png" translatesAutoresizingMaskIntoConstraints="NO" id="Iks-6a-sn4"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Qt-CA-1U6">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="208" id="CS7-ZJ-imz"/>
+                                    <constraint firstAttribute="height" constant="106" id="JSR-HG-3Im"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6PW-P9-KPD">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="57" id="AQU-w1-lbw"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="6PW-P9-KPD" firstAttribute="top" secondItem="LIr-BY-Cmr" secondAttribute="top" constant="172" id="0Az-nj-AMB"/>
+                            <constraint firstItem="Iks-6a-sn4" firstAttribute="bottom" secondItem="LIr-BY-Cmr" secondAttribute="bottom" type="default" id="1qw-tI-aTt"/>
+                            <constraint firstItem="6Qt-CA-1U6" firstAttribute="top" secondItem="LIr-BY-Cmr" secondAttribute="top" constant="25" id="2eq-Dd-9PC"/>
+                            <constraint firstItem="6Qt-CA-1U6" firstAttribute="leading" secondItem="6PW-P9-KPD" secondAttribute="leading" type="default" id="IZZ-sE-HpE"/>
+                            <constraint firstItem="Iks-6a-sn4" firstAttribute="leading" secondItem="LIr-BY-Cmr" secondAttribute="leading" type="default" id="PJ3-Cv-bcE"/>
+                            <constraint firstItem="Iks-6a-sn4" firstAttribute="trailing" secondItem="LIr-BY-Cmr" secondAttribute="trailing" type="default" id="cfq-GK-Muk"/>
+                            <constraint firstItem="6PW-P9-KPD" firstAttribute="centerX" secondItem="Iks-6a-sn4" secondAttribute="centerX" type="default" id="i9N-V4-xRW"/>
+                            <constraint firstItem="6PW-P9-KPD" firstAttribute="trailing" secondItem="6Qt-CA-1U6" secondAttribute="trailing" type="default" id="lYk-eq-BPG"/>
+                            <constraint firstItem="Iks-6a-sn4" firstAttribute="top" secondItem="LIr-BY-Cmr" secondAttribute="top" type="default" id="rqG-bi-EDw"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="wUT-Pt-lYX"/>
+                    <connections>
+                        <outlet property="itemImage" destination="6Qt-CA-1U6" id="Wbp-eQ-rYc"/>
+                        <outlet property="iteminfolabel" destination="6PW-P9-KPD" id="ED9-Gq-RcA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zbC-Z0-Fwf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1480" y="438"/>
         </scene>
         <!--Navigation Controller - Friends-->
         <scene sceneID="6dz-VB-dEl">
@@ -414,6 +464,7 @@
         <image name="Default.png" width="320" height="480"/>
         <image name="house.png" width="30" height="30"/>
         <image name="iPhone Login.jpg" width="640" height="1136"/>
+        <image name="itembackground.png" width="640" height="1136"/>
         <image name="man.png" width="30" height="30"/>
         <image name="map-pin.png" width="30" height="30"/>
         <image name="message.png" width="30" height="30"/>
@@ -447,12 +498,17 @@
         </class>
         <class className="StoreViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/StoreViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="pressButton:"/>
-            </relationships>
         </class>
         <class className="TabBarController" superclassName="UITabBarController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/TabBarController.h"/>
+        </class>
+        <class className="itemDetailViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/itemDetailViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="itemImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="iteminfo" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="iteminfolabel" candidateClass="UILabel"/>
+            </relationships>
         </class>
         <class className="messageTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/messageTableViewController.h"/>

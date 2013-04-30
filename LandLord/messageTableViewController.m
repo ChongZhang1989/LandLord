@@ -73,6 +73,9 @@
 	
 	NSDictionary *jsonroot = [NSJSONSerialization JSONObjectWithData:surrJSON options:NSJSONReadingMutableContainers error:0];
 	NSArray *results = [jsonroot objectForKey:@"results"];
+    if ([results count] == 0) {
+        return;
+    }
 	for (NSDictionary *result in results) {
 		messageObject *msgobj = [[messageObject alloc] init];
         NSString *name = [result objectForKey:@"friend"];
