@@ -71,7 +71,6 @@
         
         NSString *originalString = _landpost.text;
         
-        //NSString *newString = [originalString stringByReplacingOccurancesOfString:@" " withString:@"%20"];
         NSString *newstring = [originalString stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
         
         NSString *nameurlstr = [NSString stringWithFormat:@"http://lordmap2k13.appspot.com/setmsg?landId=%@&msg=%@", _currland.currentLandid, newstring];
@@ -87,8 +86,6 @@
         } else {
             [self confirmShow:@"Already Sent" message:@"New land post update failed due to server problem, please try again later" button:@"OK"];
         }
-
-        
 	} else if([sender tag] == 3){
         //post land name
         NSLog(@"%@", _landname.text);
