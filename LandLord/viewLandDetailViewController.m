@@ -87,8 +87,6 @@
         } else {
             [self confirmShow:@"Already Sent" message:@"New land post update failed due to server problem, please try again later" button:@"OK"];
         }
-
-        
 	} else if([sender tag] == 3){
         //post land name
         NSLog(@"%@", _landname.text);
@@ -194,9 +192,23 @@
         return;
     }
     else if([_currland.type isEqualToString:@"friend"]){
+		//add label
+		CGFloat maxWidth = [UIScreen mainScreen].bounds.size.width;
+		UILabel *name = [[UILabel alloc] initWithFrame:CGRectMake(20, 20, maxWidth - 40, 40)];
+		[name setLineBreakMode:NSLineBreakByCharWrapping];
+		[name setText:[NSString stringWithFormat:@"Land Name: %@", _currland.landname]];
+		[view addSubview:name];
+		
+		UILabel *message = [[UILabel alloc] initWithFrame:CGRectMake(20, 80, maxWidth - 40, 40)];
+		[message setLineBreakMode:NSLineBreakByCharWrapping];
+		[message setNumberOfLines:10];
+		[message setText:[NSString stringWithFormat:@"Land Message: %@", _currland.landmsg]];
+		[view addSubview:message];
+		[self setTitle:[NSString stringWithFormat:@"%@'s Land", _currland.owner]];
+		
         //If this is a friend's land
         UIButton *atk = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        atk.frame =  CGRectMake(156, 91, 106, 50);
+        atk.frame =  CGRectMake(156, 191, 106, 50);
         atk.tag = 1;
         [atk setTitle:@"ATTACK" forState:UIControlStateNormal];
         [atk addTarget:self action:@selector(ButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
@@ -206,12 +218,25 @@
         return;
     }
     
-    
+    CGFloat maxWidth = [UIScreen mainScreen].bounds.size.width;
+	UILabel *name = [[UILabel alloc] initWithFrame:CGRectMake(20, 20, maxWidth - 40, 40)];
+	[name setLineBreakMode:NSLineBreakByCharWrapping];
+	[name setText:[NSString stringWithFormat:@"Land Name: %@", _currland.landname]];
+	[view addSubview:name];
+	
+	UILabel *message = [[UILabel alloc] initWithFrame:CGRectMake(20, 80, maxWidth - 40, 40)];
+	[message setLineBreakMode:NSLineBreakByCharWrapping];
+	[message setNumberOfLines:10];
+	[message setText:[NSString stringWithFormat:@"Land Message: %@", _currland.landmsg]];
+	[view addSubview:message];
+	[self setTitle:[NSString stringWithFormat:@"%@'s Land", _currland.owner]];
+	
+	
     //This is other's land
     
     UIButton *addfri = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     
-    addfri.frame = CGRectMake(10, 91, 106, 50);
+    addfri.frame = CGRectMake(10, 191, 106, 50);
     addfri.tag = 0;
     [addfri setTitle:@"Add Friend" forState:UIControlStateNormal];
     [addfri addTarget:self action:@selector(ButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
@@ -219,7 +244,7 @@
     [view addSubview:addfri];
     
     UIButton *atk = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    atk.frame =  CGRectMake(156, 91, 106, 50);
+    atk.frame =  CGRectMake(156, 191, 106, 50);
     atk.tag = 1;
     [atk setTitle:@"ATTACK" forState:UIControlStateNormal];
     [atk addTarget:self action:@selector(ButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
