@@ -322,12 +322,12 @@
                                     <constraint firstAttribute="height" constant="106" id="JSR-HG-3Im"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6PW-P9-KPD">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6PW-P9-KPD">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="57" id="AQU-w1-lbw"/>
+                                    <constraint firstAttribute="height" constant="119" id="0PN-tf-Sv9"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -506,7 +506,6 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/itemDetailViewController.h"/>
             <relationships>
                 <relationship kind="outlet" name="itemImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="iteminfo" candidateClass="UITextView"/>
                 <relationship kind="outlet" name="iteminfolabel" candidateClass="UILabel"/>
             </relationships>
         </class>

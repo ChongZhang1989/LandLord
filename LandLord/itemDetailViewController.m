@@ -10,8 +10,6 @@
 
 @interface itemDetailViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *itemImage;
-@property (weak, nonatomic) IBOutlet UITextView *iteminfo;
-
 @property (weak, nonatomic) IBOutlet UILabel *iteminfolabel;
 
 @end

@@ -28,25 +28,25 @@
 
 -(void)additeminfo
 {
-    NSString *t1 = @"This a sword from a family with long history fighting with thier enemies and standing with courage";
+    NSString *t1 = @"This a sword from a family with a long \nhistory fighting with thier enemies and standing with courage";
     [_iteminfolist addObject:t1];
-    NSString *t2 = @"A weapon made for a general who never lose a war";
+    NSString *t2 = @"A weapon made for a general who never \nlose a war";
     [_iteminfolist addObject:t2];
-    NSString *t3 = @"This is the hammer of Thor, the great god of thunder, lightning, storms, oak trees, strength, the son of the god of god";
+    NSString *t3 = @"This is the hammer of Thor, the great god of \nthunder, lightning, storms, oak trees, strength, \nthe son of the god of god";
     [_iteminfolist addObject:t3];
-    NSString *t4 = @"This is the weapon of Mars, the great god of war";
+    NSString *t4 = @"This is the weapon of Mars, \nthe great god of war";
     [_iteminfolist addObject:t4];
-    NSString *t5 = @"This weapon belongs to Zsus, the great god of the world, the god of god";
+    NSString *t5 = @"This weapon belongs to Zsus, \nthe great god of the world, \nthe god of god";
     [_iteminfolist addObject:t5];
-    NSString *t6 = @"A low and normal wall which could stop some enemies";
+    NSString *t6 = @"A low and normal wall which \ncould stop some enemies";
     [_iteminfolist addObject:t6];
-    NSString *t7 = @"A small house with strong walls and solid structure";
+    NSString *t7 = @"A small house with strong walls \nand solid structure";
     [_iteminfolist addObject:t7];
-    NSString *t8 = @"This used to be the home of Duke Shane, the great hero of Rohan. It is small but beautiful castle with high walls";
+    NSString *t8 = @"This used to be the home of Duke Shane,\nthe great hero of Rohan. It is small but beautiful castle with high walls";
     [_iteminfolist addObject:t8];
-    NSString *t9 = @"Home of Gandalf, a castle flying in the sky";
+    NSString *t9 = @"Home of Gandalf, \na castle flying in the sky";
     [_iteminfolist addObject:t9];
-    NSString *t10 = @"The city of city, the city of king, the city of Aragorn";
+    NSString *t10 = @"The city of city, \nthe city of king, the city of Aragorn";
     [_iteminfolist addObject:t10];
 }
 - (void)getItem
