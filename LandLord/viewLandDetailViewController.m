@@ -75,6 +75,7 @@
         [view addSubview:atk];
         
         [self.view addSubview:view];
+        return;
     }
     
     
