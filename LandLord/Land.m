@@ -13,5 +13,6 @@
 @synthesize bottomright = _bottomright;
 @synthesize type = _type;
 @synthesize owner = _owner;
+@synthesize currentLandid = _currentLandid;
 
 @end

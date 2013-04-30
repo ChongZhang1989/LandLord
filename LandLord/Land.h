@@ -17,5 +17,6 @@
 @property double defence;
 @property id landid;
 @property id pinid;
+@property (nonatomic, strong) NSString *currentLandid;
 
 @end

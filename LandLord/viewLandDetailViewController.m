@@ -41,7 +41,22 @@
     }
     else if([sender tag] == 1){
         NSLog(@"attack");
-    }
+		NSString *urlstr = [NSString stringWithFormat:@"http://lordmap2k13.appspot.com/attack?userId=%@&landId=%@", _username, _currland.currentLandid];
+		NSURL *surrurl = [NSURL URLWithString:urlstr];
+		NSError *error = nil;
+		NSData *surrJSON = [NSData dataWithContentsOfURL:surrurl options:0 error:&error];
+		
+		NSDictionary *jsonroot = [NSJSONSerialization JSONObjectWithData:surrJSON options:NSJSONReadingMutableContainers error:0];
+		NSString *result = [jsonroot objectForKey:@"result"];
+		if ([result isEqualToString:@"succeeded"]) {
+			[self confirmShow:@"Congratulations" message:@"You got the land!" button:@"OK"];
+		} else if ([result isEqualToString:@"failed"]) {
+			[self confirmShow:@"Unfortunately" message:@"You cannot conquer the land!" button:@"OK"];
+		} else {
+			[self confirmShow:@"Sorry" message:@"You cannot attack anymore today!" button:@"OK"];
+		}
+    } else if ([sender tag] == 2) {
+	}
 }
 
 - (void)viewDidLoad
@@ -60,7 +75,6 @@
     //Determine to show which view according to the user's rel to the land
     if([_currland.type isEqualToString:@"own"]){
         //This is my own land
-		NSLog(@"my own land!!!%^^&^(&*(()");
 		CGFloat maxWidth = [UIScreen mainScreen].bounds.size.width;
         CGRect frame = CGRectMake(20, 20, maxWidth - 40, 100);
 		UITextView *message = [[UITextView alloc] initWithFrame:frame];
@@ -71,10 +85,10 @@
 		message.backgroundColor = [UIColor clearColor];
 		
 		UIButton *postMessage = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-		postMessage.frame = CGRectMake(maxWidth - 100, 160,150, 40);
-		[postMessage setTag:10];
+		postMessage.frame = CGRectMake(maxWidth - 170, 160,150, 40);
+		[postMessage setTag:2];
 		[postMessage setTitle:@"Post Message" forState:UIControlStateNormal];
-		
+		[postMessage addTarget:self action:@selector(ButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
 		
 		[view addSubview:postMessage];
 		[view addSubview:message];
