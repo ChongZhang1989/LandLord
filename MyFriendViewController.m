@@ -51,14 +51,14 @@
 - (void) getFriend
 {
 	[_friendlist removeAllObjects];
-	NSString *urlstr = [NSString stringWithFormat:@"http://lordmap2k13.appspot.com/showrequests?userId=%@", _username];
+	NSString *urlstr = [NSString stringWithFormat:@"http://lordmap2k13.appspot.com/getuserinfo?userId=%@", _username];
 	NSLog(@"get friend url %@", urlstr);
 	NSURL *surrurl = [NSURL URLWithString:urlstr];
 	NSError *error = nil;
 	NSData *surrJSON = [NSData dataWithContentsOfURL:surrurl options:0 error:&error];
 	
 	NSDictionary *jsonroot = [NSJSONSerialization JSONObjectWithData:surrJSON options:NSJSONReadingMutableContainers error:0];
-	NSArray *results = [jsonroot objectForKey:@"results"];
+	NSArray *results = [jsonroot objectForKey:@"friends"];
 	for (NSDictionary *result in results) {
 		[_friendlist addObject:[result objectForKey:@"friend"]];
 	}

@@ -155,7 +155,7 @@ int refresh = 0;
         
         //Get surrounding points
         NSString *urlstr = [NSString stringWithFormat:@"http://lordmap2k13.appspot.com/getsurrounding?userId=%@&lat=%f&lng=%f", _username, locationManager.location.coordinate.latitude, locationManager.location.coordinate.longitude];
-		NSLog(urlstr);
+		NSLog(@"**********************************%@", urlstr);
         NSURL *surrurl = [NSURL URLWithString:urlstr];
         NSError *error = nil;
         NSData *surrJSON = [NSData dataWithContentsOfURL:surrurl options:0 error:&error];
