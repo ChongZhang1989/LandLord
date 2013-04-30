@@ -68,6 +68,7 @@
     } else if ([sender tag] == 2) {
         //post land post
         NSLog(@"%@",_landpost.text);
+		_currland.landmsg = _landpost.text;
         
         NSString *originalString = _landpost.text;
         
@@ -89,7 +90,8 @@
 	} else if([sender tag] == 3){
         //post land name
         NSLog(@"%@", _landname.text);
-        
+        _currland.landname = _landname.text;
+		
         NSString *originalstring = _landname.text;
         
         NSString *newstring = [originalstring stringByReplacingOccurrencesOfString:@" " withString:@"%20"];

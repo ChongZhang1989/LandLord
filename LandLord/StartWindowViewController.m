@@ -53,10 +53,17 @@
 	_password = [sender text];
 }
 
+- (void)confirmShow: (NSString *)title message:(NSString *)message button:(NSString *)button
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:button otherButtonTitles:nil];
+    [alert show];
+}
+
+
 - (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
 {
 	//for test convenience
-	return YES;
+	//return YES;
 	
 	
 	NSString *urlString= [NSString stringWithFormat:@"http://lordmap2k13.appspot.com/login?userId=%@&userPwd=%@", _username, _password];
@@ -75,6 +82,7 @@
 	NSString *res = [result objectForKey:@"result"];
 	if ([res isEqualToString:@"yes"])
 		return YES;
+	[self confirmShow:@"Sorry" message:@"Your username or password is wrong!" button:@"OK"];
 	return NO;
 }
 
