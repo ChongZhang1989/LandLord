@@ -324,28 +324,58 @@
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6PW-P9-KPD">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="119" id="0PN-tf-Sv9"/>
+                                    <constraint firstAttribute="height" constant="67" id="JAr-Dg-O3S"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BjZ-dc-zKA">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="S5f-bE-2Pb"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2xD-zC-62S">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="73" id="auu-Lb-0dJ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Buy">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="buyitem:" destination="JMR-wt-C8T" eventType="touchUpInside" id="ajs-2Y-Muc"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="6PW-P9-KPD" firstAttribute="top" secondItem="LIr-BY-Cmr" secondAttribute="top" constant="172" id="0Az-nj-AMB"/>
                             <constraint firstItem="Iks-6a-sn4" firstAttribute="bottom" secondItem="LIr-BY-Cmr" secondAttribute="bottom" type="default" id="1qw-tI-aTt"/>
                             <constraint firstItem="6Qt-CA-1U6" firstAttribute="top" secondItem="LIr-BY-Cmr" secondAttribute="top" constant="25" id="2eq-Dd-9PC"/>
+                            <constraint firstAttribute="bottom" secondItem="2xD-zC-62S" secondAttribute="bottom" constant="37" id="2ki-Lp-7qk"/>
+                            <constraint firstItem="2xD-zC-62S" firstAttribute="centerX" secondItem="Iks-6a-sn4" secondAttribute="centerX" type="default" id="F7t-mK-jmN"/>
+                            <constraint firstItem="BjZ-dc-zKA" firstAttribute="trailing" secondItem="6PW-P9-KPD" secondAttribute="trailing" type="default" id="GgF-QY-v5s"/>
                             <constraint firstItem="6Qt-CA-1U6" firstAttribute="leading" secondItem="6PW-P9-KPD" secondAttribute="leading" type="default" id="IZZ-sE-HpE"/>
                             <constraint firstItem="Iks-6a-sn4" firstAttribute="leading" secondItem="LIr-BY-Cmr" secondAttribute="leading" type="default" id="PJ3-Cv-bcE"/>
+                            <constraint firstAttribute="bottom" secondItem="BjZ-dc-zKA" secondAttribute="bottom" constant="158" id="ZMY-WR-yXF"/>
+                            <constraint firstItem="6PW-P9-KPD" firstAttribute="leading" secondItem="BjZ-dc-zKA" secondAttribute="leading" type="default" id="baC-YT-qdk"/>
                             <constraint firstItem="Iks-6a-sn4" firstAttribute="trailing" secondItem="LIr-BY-Cmr" secondAttribute="trailing" type="default" id="cfq-GK-Muk"/>
-                            <constraint firstItem="6PW-P9-KPD" firstAttribute="centerX" secondItem="Iks-6a-sn4" secondAttribute="centerX" type="default" id="i9N-V4-xRW"/>
                             <constraint firstItem="6PW-P9-KPD" firstAttribute="trailing" secondItem="6Qt-CA-1U6" secondAttribute="trailing" type="default" id="lYk-eq-BPG"/>
                             <constraint firstItem="Iks-6a-sn4" firstAttribute="top" secondItem="LIr-BY-Cmr" secondAttribute="top" type="default" id="rqG-bi-EDw"/>
+                            <constraint firstItem="2xD-zC-62S" firstAttribute="centerX" secondItem="BjZ-dc-zKA" secondAttribute="centerX" type="default" id="xnO-FO-Ae5"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="wUT-Pt-lYX"/>
                     <connections>
+                        <outlet property="cost" destination="BjZ-dc-zKA" id="77V-wd-fPU"/>
                         <outlet property="itemImage" destination="6Qt-CA-1U6" id="Wbp-eQ-rYc"/>
                         <outlet property="iteminfolabel" destination="6PW-P9-KPD" id="ED9-Gq-RcA"/>
                     </connections>
@@ -505,6 +535,8 @@
         <class className="itemDetailViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/itemDetailViewController.h"/>
             <relationships>
+                <relationship kind="action" name="buyitem:"/>
+                <relationship kind="outlet" name="cost" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="itemImage" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="iteminfolabel" candidateClass="UILabel"/>
             </relationships>

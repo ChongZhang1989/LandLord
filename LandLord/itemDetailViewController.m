@@ -11,6 +11,7 @@
 @interface itemDetailViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *itemImage;
 @property (weak, nonatomic) IBOutlet UILabel *iteminfolabel;
+@property (weak, nonatomic) IBOutlet UILabel *cost;
 
 @end
 
@@ -24,6 +25,9 @@
     }
     return self;
 }
+- (IBAction)buyitem:(id)sender {
+    
+}
 
 - (void)viewDidLoad
 {
@@ -32,8 +36,9 @@
     NSLog(@"%@", _itemobj.name);
     [_itemImage setImage:[UIImage imageNamed:_itemobj.imagename]];
     //[_iteminfo setText:_itemobj.iteminfo];
-    [_iteminfolabel setText:_itemobj.iteminfo];
-    NSLog(_itemobj.iteminfo);
+    [_iteminfolabel setText:[NSString stringWithFormat:@"%@", _itemobj.iteminfo]];
+    [_cost setText:[NSString stringWithFormat:@"COST: %@",_itemobj.price]];
+    NSLog(@"%@", _itemobj.iteminfo);
 }
 
 - (void)didReceiveMemoryWarning
