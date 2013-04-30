@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12A269" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="xxn-mn-GXt">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12C3012" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="xxn-mn-GXt">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
@@ -66,13 +66,7 @@
                             <outlet property="delegate" destination="7ch-MS-Tz7" id="JvK-uU-gGj"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="Q8G-wF-iCx">
-                        <barButtonItem key="rightBarButtonItem" title="Refresh" id="HuZ-m2-NbR">
-                            <connections>
-                                <action selector="refreshPressed:" destination="7ch-MS-Tz7" id="Uhk-tA-rNX"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="Q8G-wF-iCx"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zgE-Ab-t5I" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -445,47 +439,6 @@
         <image name="shopping-cart.png" width="29" height="30"/>
         <image name="text bg.png" width="37" height="21"/>
     </resources>
-    <classes>
-        <class className="LandLordViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/LandLordViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="tarbutton:"/>
-                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
-            </relationships>
-        </class>
-        <class className="MyFriendViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MyFriendViewController.h"/>
-        </class>
-        <class className="MyLandViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MyLandViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="refreshPressed:"/>
-            </relationships>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="StartWindowViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/StartWindowViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="buttonPressed:"/>
-                <relationship kind="action" name="getPassword:"/>
-                <relationship kind="action" name="getUsername:"/>
-            </relationships>
-        </class>
-        <class className="StoreViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/StoreViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="pressButton:"/>
-            </relationships>
-        </class>
-        <class className="TabBarController" superclassName="UITabBarController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TabBarController.h"/>
-        </class>
-        <class className="messageTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/messageTableViewController.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
