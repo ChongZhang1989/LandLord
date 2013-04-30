@@ -67,7 +67,18 @@
 		land.owner = [result objectForKey:@"owner"];
 		land.type = [result objectForKey:@"rel"];
 		[_landlist addObject:land];
-		[_showlist addObject:[NSString stringWithFormat:@"(%f, %f)", p.latitude, p.longitude]];
+        NSString *landname = [result objectForKey:@"name"];
+        if([landname isEqualToString:@""]){
+            NSString *lname = @"";
+             [_showlist addObject:lname];
+        } else {
+            NSString *lname = [NSString stringWithFormat:@" - %@", landname];
+             [_showlist addObject:lname];
+        }
+		
+        
+        //[_showlist addObject:[NSString stringWithFormat:@"(%f, %f)", p.latitude, p.longitude]];
+
 //		dispatch_async(dispatch_get_main_queue(),^ {
 //		CLGeocoder *geocoder = [[CLGeocoder alloc] init];
 //		CLLocation *tmp = [[CLLocation alloc] initWithLatitude:p.latitude longitude:p.longitude];

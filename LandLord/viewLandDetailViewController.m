@@ -155,8 +155,8 @@
         //To set name for the land
         CGRect framename = CGRectMake(20, 20, maxWidth - 40, 40);
         _landname = [[UITextField alloc] initWithFrame:framename];
-        _landname.layer.borderWidth = 0;
-        _landname.layer.borderColor = [[UIColor blueColor] CGColor];
+        _landname.layer.borderWidth = 1.0f;
+        _landname.layer.borderColor = [[UIColor grayColor] CGColor];
         _landname.font = [UIFont systemFontOfSize:17.0];
         _landname.backgroundColor = [UIColor clearColor];
         _landname.text = lname;
@@ -174,7 +174,7 @@
         //To set land post
         CGRect frame = CGRectMake(20, 120, maxWidth - 40, 50);
 		_landpost = [[UITextView alloc] initWithFrame:frame];
-		_landpost.layer.borderWidth = 0;
+		_landpost.layer.borderWidth = 1.0f;
 		_landpost.layer.borderColor = [[UIColor grayColor] CGColor];
 		_landpost.textColor = [UIColor blackColor];
 		_landpost.font = [UIFont systemFontOfSize:17.0];

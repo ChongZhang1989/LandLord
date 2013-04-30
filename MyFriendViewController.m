@@ -30,6 +30,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self setTitle:@"My Friends"];
+    
 	_friendlist = [[NSMutableArray alloc] init];
 	LandLordAppDelegate *delegate = (LandLordAppDelegate *)[[UIApplication sharedApplication] delegate];
     _username = delegate.username;

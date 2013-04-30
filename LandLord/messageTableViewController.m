@@ -38,6 +38,8 @@ int rowindex = -1;
     
     self.tableView.dataSource = self;
 	self.tableView.delegate = self;
+    
+    [self setTitle:@"Messages"];
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -79,7 +81,6 @@ int rowindex = -1;
 	NSArray *results = [jsonroot objectForKey:@"results"];
     if ([results count] != 0) {
         
-    
 	for (NSDictionary *result in results) {
 		messageObject *msgobj = [[messageObject alloc] init];
         NSString *name = [result objectForKey:@"friend"];
@@ -262,7 +263,8 @@ int rowindex = -1;
         if([reply isEqualToString:@"yes"]){
             NSString *msg = [NSString stringWithFormat:@"Now you are friend with %@", _countername];
             [self confirmShow:@"Greeting" message:msg button:@"OK"];
-            if(rowindex > 0){
+            NSLog(@"%d", rowindex);
+            if(rowindex >= 0){
                 [_showlist removeObjectAtIndex:rowindex];
                 [self.tableView reloadData];
             } else {
