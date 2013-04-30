@@ -172,7 +172,7 @@
         [view addSubview:postname];
         
         //To set land post
-        CGRect frame = CGRectMake(20, 120, maxWidth - 40, 50);
+        CGRect frame = CGRectMake(20, 110, maxWidth - 40, 40);
 		_landpost = [[UITextView alloc] initWithFrame:frame];
 		_landpost.layer.borderWidth = 1.0f;
 		_landpost.layer.borderColor = [[UIColor grayColor] CGColor];
@@ -182,7 +182,7 @@
 		_landpost.text = lmsg;
         
 		UIButton *postMessage = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-		postMessage.frame = CGRectMake(maxWidth - 170, 180,150, 40);
+		postMessage.frame = CGRectMake(maxWidth - 170, 150,150, 40);
 		[postMessage setTag:2];
 		[postMessage setTitle:@"Post Message" forState:UIControlStateNormal];
 		[postMessage addTarget:self action:@selector(ButtonPressed:) forControlEvents:UIControlEventTouchUpInside];

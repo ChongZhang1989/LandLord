@@ -323,6 +323,8 @@
 		02317232172B55D300E1376A /* MyLandViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02317231172B55D300E1376A /* MyLandViewController.m */; };
 		02317235172C537700E1376A /* StoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02317234172C537700E1376A /* StoreViewController.m */; };
 		02317238172C545A00E1376A /* Purchase.m in Sources */ = {isa = PBXBuildFile; fileRef = 02317237172C545A00E1376A /* Purchase.m */; };
+		028D7FD1173043E800F2F88F /* Castle-Wallpaper-1136x640.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 028D7FCF173043E800F2F88F /* Castle-Wallpaper-1136x640.jpg */; };
+		028D7FD2173043E800F2F88F /* Floating-Castle-Wallpapers-1136x640.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 028D7FD0173043E800F2F88F /* Floating-Castle-Wallpapers-1136x640.jpg */; };
 		0299A5E71729B91B0010A0EA /* StartWindowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0299A5E61729B91B0010A0EA /* StartWindowViewController.m */; };
 		0299A5EA1729D5B30010A0EA /* iPhone Login.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0299A5E81729D5B30010A0EA /* iPhone Login.jpg */; };
 		0299A5EB1729D5B30010A0EA /* text bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 0299A5E91729D5B30010A0EA /* text bg.png */; };
@@ -683,6 +685,8 @@
 		02317234172C537700E1376A /* StoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreViewController.m; sourceTree = "<group>"; };
 		02317236172C545A00E1376A /* Purchase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Purchase.h; sourceTree = "<group>"; };
 		02317237172C545A00E1376A /* Purchase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Purchase.m; sourceTree = "<group>"; };
+		028D7FCF173043E800F2F88F /* Castle-Wallpaper-1136x640.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "Castle-Wallpaper-1136x640.jpg"; path = "../Castle-Wallpaper-1136x640.jpg"; sourceTree = "<group>"; };
+		028D7FD0173043E800F2F88F /* Floating-Castle-Wallpapers-1136x640.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "Floating-Castle-Wallpapers-1136x640.jpg"; path = "../Floating-Castle-Wallpapers-1136x640.jpg"; sourceTree = "<group>"; };
 		0299A5E51729B91B0010A0EA /* StartWindowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartWindowViewController.h; sourceTree = "<group>"; };
 		0299A5E61729B91B0010A0EA /* StartWindowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartWindowViewController.m; sourceTree = "<group>"; };
 		0299A5E81729D5B30010A0EA /* iPhone Login.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "iPhone Login.jpg"; path = "../iPhone Login.jpg"; sourceTree = "<group>"; };
@@ -1078,6 +1082,8 @@
 		020158581727201F00AA98F6 /* LandLord */ = {
 			isa = PBXGroup;
 			children = (
+				028D7FCF173043E800F2F88F /* Castle-Wallpaper-1136x640.jpg */,
+				028D7FD0173043E800F2F88F /* Floating-Castle-Wallpapers-1136x640.jpg */,
 				FA9F80381730252500FD4177 /* landdetailview.png */,
 				FAE36EC0172FA63F00159FB7 /* mylandview.jpg */,
 				FAA6CBD4172F52BE00615807 /* itembackground.png */,
@@ -2147,6 +2153,8 @@
 				FAA6CBD5172F52BE00615807 /* itembackground.png in Resources */,
 				FAE36EC1172FA63F00159FB7 /* mylandview.jpg in Resources */,
 				FA9F80391730252500FD4177 /* landdetailview.png in Resources */,
+				028D7FD1173043E800F2F88F /* Castle-Wallpaper-1136x640.jpg in Resources */,
+				028D7FD2173043E800F2F88F /* Floating-Castle-Wallpapers-1136x640.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

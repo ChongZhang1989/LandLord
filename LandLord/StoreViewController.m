@@ -101,6 +101,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+	[self setTitle:@"Store"];
 	_purchaseItem = [[NSMutableArray alloc] init];
     _iteminfolist = [[NSMutableArray alloc] init];
 	self.tableView.dataSource = self;

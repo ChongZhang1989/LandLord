@@ -120,6 +120,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+	[self setTitle:@"My Lands"];
 	self.tableView.dataSource = self;
 	self.tableView.delegate = self;
     _landlist = [[NSMutableArray alloc] init];
