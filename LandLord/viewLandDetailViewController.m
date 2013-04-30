@@ -10,7 +10,8 @@
 #import <QuartzCore/QuartzCore.h>
 
 @interface viewLandDetailViewController ()
-
+@property (strong, nonatomic) IBOutlet UITextField *landname;
+@property (strong, nonatomic) IBOutlet UITextField *landpost;
 @end
 
 @implementation viewLandDetailViewController
@@ -20,6 +21,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        [self becomeFirstResponder];
     }
     LandLordAppDelegate *delegate = (LandLordAppDelegate *)[[UIApplication sharedApplication] delegate];
     _username = delegate.username;
@@ -34,9 +36,17 @@
         //send request to API and retrive result
         
         NSString *adfriurlstr = [NSString stringWithFormat:@"http://lordmap2k13.appspot.com/addfriend?userId1=%@&userId2=%@",_currland.owner,_username];
+        NSURL *adfriurl = [NSURL URLWithString:adfriurlstr];
+        NSError *error = nil;
+        NSData *data = [NSData dataWithContentsOfURL:adfriurl options:0 error:&error];
         
-        if(YES){
-            
+        NSDictionary *jsonroot = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:0];
+        NSString *reply = (NSString *)[jsonroot objectForKey:@"result"];
+        
+        if([reply isEqualToString:@"yes"]){
+            [self confirmShow:@"Great Job" message:@"Your friend invitation has been sent out" button:@"OK"];
+        } else {
+            [self confirmShow:@"Already Sent" message:@"You have sent friend invitation\nto this person previously,\nlet's wait for confirmation" button:@"OK"];
         }
     }
     else if([sender tag] == 1){
@@ -56,6 +66,7 @@
 			[self confirmShow:@"Sorry" message:@"You cannot attack anymore today!" button:@"OK"];
 		}
     } else if ([sender tag] == 2) {
+        NSLog(@"%@",_landpost.text);
 	}
 }
 
@@ -77,12 +88,12 @@
         //This is my own land
 		CGFloat maxWidth = [UIScreen mainScreen].bounds.size.width;
         CGRect frame = CGRectMake(20, 20, maxWidth - 40, 100);
-		UITextView *message = [[UITextView alloc] initWithFrame:frame];
-		message.layer.borderWidth = 5.0f;
-		message.layer.borderColor = [[UIColor grayColor] CGColor];
-		message.textColor = [UIColor blackColor];
-		message.font = [UIFont systemFontOfSize:17.0];
-		message.backgroundColor = [UIColor clearColor];
+		_landpost = [[UITextView alloc] initWithFrame:frame];
+		_landpost.layer.borderWidth = 5.0f;
+		_landpost.layer.borderColor = [[UIColor grayColor] CGColor];
+		_landpost.textColor = [UIColor blackColor];
+		_landpost.font = [UIFont systemFontOfSize:17.0];
+		_landpost.backgroundColor = [UIColor clearColor];
 		
 		UIButton *postMessage = [UIButton buttonWithType:UIButtonTypeRoundedRect];
 		postMessage.frame = CGRectMake(maxWidth - 170, 160,150, 40);
@@ -91,7 +102,7 @@
 		[postMessage addTarget:self action:@selector(ButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
 		
 		[view addSubview:postMessage];
-		[view addSubview:message];
+		[view addSubview:_landpost];
         [self.view addSubview:view];
         return;
     }
