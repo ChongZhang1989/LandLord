@@ -18,5 +18,6 @@
 @property id landid;
 @property id pinid;
 @property (nonatomic, strong) NSString *currentLandid;
-
+@property (nonatomic, strong) NSString *landname;
+@property (nonatomic, strong) NSString *landmsg;
 @end

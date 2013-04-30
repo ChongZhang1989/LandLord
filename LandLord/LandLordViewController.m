@@ -176,6 +176,8 @@ int refresh = 0;
 			land.owner = [result objectForKey:@"owner"];
 			land.type = [result objectForKey:@"rel"];
 			land.currentLandid = [result objectForKey:@"id"];
+            land.landname = [result objectForKey:@"name"];
+            land.landmsg = [result objectForKey:@"msg"];
 			[self.landlist addObject:land];
 		}
         //Add pins here in a new thread
@@ -184,7 +186,6 @@ int refresh = 0;
 						   [self showLand];
 					   });
     });
-	
 }
 
 - (IBAction)tarbutton:(id)sender {

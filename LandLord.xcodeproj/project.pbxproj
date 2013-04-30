@@ -351,6 +351,7 @@
 		FAA6CBD3172F4FB400615807 /* 6.png in Resources */ = {isa = PBXBuildFile; fileRef = FAA6CBD1172F4FB300615807 /* 6.png */; };
 		FAA6CBD5172F52BE00615807 /* itembackground.png in Resources */ = {isa = PBXBuildFile; fileRef = FAA6CBD4172F52BE00615807 /* itembackground.png */; };
 		FAA6CBD8172F531100615807 /* itemDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA6CBD7172F531100615807 /* itemDetailViewController.m */; };
+		FAE36EC1172FA63F00159FB7 /* mylandview.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FAE36EC0172FA63F00159FB7 /* mylandview.jpg */; };
 		FAEBBFE9172E200900C97822 /* ownRec.m in Sources */ = {isa = PBXBuildFile; fileRef = FAEBBFE8172E200900C97822 /* ownRec.m */; };
 		FAEBBFEC172E202000C97822 /* friendRec.m in Sources */ = {isa = PBXBuildFile; fileRef = FAEBBFEB172E202000C97822 /* friendRec.m */; };
 /* End PBXBuildFile section */
@@ -1020,6 +1021,7 @@
 		FAA6CBD4172F52BE00615807 /* itembackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = itembackground.png; sourceTree = SOURCE_ROOT; };
 		FAA6CBD6172F531000615807 /* itemDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = itemDetailViewController.h; sourceTree = "<group>"; };
 		FAA6CBD7172F531100615807 /* itemDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = itemDetailViewController.m; sourceTree = "<group>"; };
+		FAE36EC0172FA63F00159FB7 /* mylandview.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mylandview.jpg; sourceTree = SOURCE_ROOT; };
 		FAEBBFE7172E200800C97822 /* ownRec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ownRec.h; sourceTree = "<group>"; };
 		FAEBBFE8172E200900C97822 /* ownRec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ownRec.m; sourceTree = "<group>"; };
 		FAEBBFEA172E202000C97822 /* friendRec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = friendRec.h; sourceTree = "<group>"; };
@@ -1074,6 +1076,7 @@
 		020158581727201F00AA98F6 /* LandLord */ = {
 			isa = PBXGroup;
 			children = (
+				FAE36EC0172FA63F00159FB7 /* mylandview.jpg */,
 				FAA6CBD4172F52BE00615807 /* itembackground.png */,
 				FAA6CBD0172F4FB300615807 /* 9.png */,
 				FAA6CBD1172F4FB300615807 /* 6.png */,
@@ -2139,6 +2142,7 @@
 				FAA6CBD2172F4FB400615807 /* 9.png in Resources */,
 				FAA6CBD3172F4FB400615807 /* 6.png in Resources */,
 				FAA6CBD5172F52BE00615807 /* itembackground.png in Resources */,
+				FAE36EC1172FA63F00159FB7 /* mylandview.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

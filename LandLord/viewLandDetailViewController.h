@@ -11,7 +11,7 @@
 #import "MapPin.h"
 #import "LandLordAppDelegate.h"
 
-@interface viewLandDetailViewController : UIViewController
+@interface viewLandDetailViewController : UIViewController <UITextFieldDelegate>
 @property (nonatomic, strong)Land *currland;
 @property (nonatomic, strong)MapPin *mappin;
 @property (nonatomic, strong)NSString *username;
