@@ -7,6 +7,7 @@
 //
 
 #import "viewLandDetailViewController.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface viewLandDetailViewController ()
 
@@ -20,7 +21,6 @@
     if (self) {
         // Custom initialization
     }
-    
     LandLordAppDelegate *delegate = (LandLordAppDelegate *)[[UIApplication sharedApplication] delegate];
     _username = delegate.username;
     
@@ -60,8 +60,24 @@
     //Determine to show which view according to the user's rel to the land
     if([_currland.type isEqualToString:@"own"]){
         //This is my own land
-        
-        
+		NSLog(@"my own land!!!%^^&^(&*(()");
+		CGFloat maxWidth = [UIScreen mainScreen].bounds.size.width;
+        CGRect frame = CGRectMake(20, 20, maxWidth - 40, 100);
+		UITextView *message = [[UITextView alloc] initWithFrame:frame];
+		message.layer.borderWidth = 5.0f;
+		message.layer.borderColor = [[UIColor grayColor] CGColor];
+		message.textColor = [UIColor blackColor];
+		message.font = [UIFont systemFontOfSize:17.0];
+		message.backgroundColor = [UIColor clearColor];
+		
+		UIButton *postMessage = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+		postMessage.frame = CGRectMake(maxWidth - 100, 160,150, 40);
+		[postMessage setTag:10];
+		[postMessage setTitle:@"Post Message" forState:UIControlStateNormal];
+		
+		
+		[view addSubview:postMessage];
+		[view addSubview:message];
         [self.view addSubview:view];
         return;
     }
