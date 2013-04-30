@@ -27,14 +27,32 @@
 
 - (void)getItem
 {
-	Purchase *tmp = [[Purchase alloc] init];
-	tmp.name = [[NSString alloc] init];
-	tmp.name = @"Wall";
-	[_purchaseItem addObject:tmp];
-	tmp = [[Purchase alloc] init];
-	tmp.name = [[NSString alloc] init];
-	tmp.name = @"Wall2";
-	[_purchaseItem addObject:tmp];
+	NSString *itemurlstr = @"http://lordmap2k13.appspot.com/getinventory";
+    NSURL *itemurl = [NSURL URLWithString:itemurlstr];
+    NSData *data = [NSData dataWithContentsOfURL:itemurl];
+    NSError *error;
+    NSDictionary *jsonroot = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
+    
+    NSArray *jsonitemlist = [jsonroot objectForKey:@"results"];
+    
+    for(NSDictionary *result in jsonitemlist){
+        itemObj *currobj = [[itemObj alloc] init];
+        currobj.index = (NSString *)[result objectForKey: @"index"];
+        currobj.price = (NSString *)[result objectForKey:@"price"];
+        currobj.atkPoint = (NSString *)[result objectForKey:@"atkPoint"];
+        currobj.name = (NSString *)[result objectForKey:@"name"];
+        currobj.defPoint = (NSString *)[result objectForKey:@"defPoint"];
+        [_purchaseItem addObject:currobj];
+    }
+    
+//    Purchase *tmp = [[Purchase alloc] init];
+//	tmp.name = [[NSString alloc] init];
+//	tmp.name = @"Wall";
+//	[_purchaseItem addObject:tmp];
+//	tmp = [[Purchase alloc] init];
+//	tmp.name = [[NSString alloc] init];
+//	tmp.name = @"Wall2";
+//	[_purchaseItem addObject:tmp];
 }
 - (IBAction)pressButton:(id)sender
 {

@@ -338,6 +338,12 @@
 		FAA6CBBA172F0A9C00615807 /* castle_1.png in Resources */ = {isa = PBXBuildFile; fileRef = FAA6CBB7172F0A9C00615807 /* castle_1.png */; };
 		FAA6CBBB172F0A9C00615807 /* castle_2.png in Resources */ = {isa = PBXBuildFile; fileRef = FAA6CBB8172F0A9C00615807 /* castle_2.png */; };
 		FAA6CBBC172F0A9C00615807 /* castle_3.png in Resources */ = {isa = PBXBuildFile; fileRef = FAA6CBB9172F0A9C00615807 /* castle_3.png */; };
+		FAA6CBC2172F44DC00615807 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = FAA6CBBD172F44DC00615807 /* 1.png */; };
+		FAA6CBC3172F44DC00615807 /* 4.png in Resources */ = {isa = PBXBuildFile; fileRef = FAA6CBBE172F44DC00615807 /* 4.png */; };
+		FAA6CBC4172F44DC00615807 /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = FAA6CBBF172F44DC00615807 /* 3.png */; };
+		FAA6CBC5172F44DC00615807 /* 5.png in Resources */ = {isa = PBXBuildFile; fileRef = FAA6CBC0172F44DC00615807 /* 5.png */; };
+		FAA6CBC6172F44DC00615807 /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = FAA6CBC1172F44DC00615807 /* 2.png */; };
+		FAA6CBC9172F46ED00615807 /* itemObj.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA6CBC8172F46ED00615807 /* itemObj.m */; };
 		FAEBBFE9172E200900C97822 /* ownRec.m in Sources */ = {isa = PBXBuildFile; fileRef = FAEBBFE8172E200900C97822 /* ownRec.m */; };
 		FAEBBFEC172E202000C97822 /* friendRec.m in Sources */ = {isa = PBXBuildFile; fileRef = FAEBBFEB172E202000C97822 /* friendRec.m */; };
 /* End PBXBuildFile section */
@@ -992,6 +998,13 @@
 		FAA6CBB7172F0A9C00615807 /* castle_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = castle_1.png; sourceTree = SOURCE_ROOT; };
 		FAA6CBB8172F0A9C00615807 /* castle_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = castle_2.png; sourceTree = SOURCE_ROOT; };
 		FAA6CBB9172F0A9C00615807 /* castle_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = castle_3.png; sourceTree = SOURCE_ROOT; };
+		FAA6CBBD172F44DC00615807 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = SOURCE_ROOT; };
+		FAA6CBBE172F44DC00615807 /* 4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 4.png; sourceTree = SOURCE_ROOT; };
+		FAA6CBBF172F44DC00615807 /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3.png; sourceTree = SOURCE_ROOT; };
+		FAA6CBC0172F44DC00615807 /* 5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 5.png; sourceTree = SOURCE_ROOT; };
+		FAA6CBC1172F44DC00615807 /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = SOURCE_ROOT; };
+		FAA6CBC7172F46EC00615807 /* itemObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = itemObj.h; sourceTree = "<group>"; };
+		FAA6CBC8172F46ED00615807 /* itemObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = itemObj.m; sourceTree = "<group>"; };
 		FAEBBFE7172E200800C97822 /* ownRec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ownRec.h; sourceTree = "<group>"; };
 		FAEBBFE8172E200900C97822 /* ownRec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ownRec.m; sourceTree = "<group>"; };
 		FAEBBFEA172E202000C97822 /* friendRec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = friendRec.h; sourceTree = "<group>"; };
@@ -1046,6 +1059,11 @@
 		020158581727201F00AA98F6 /* LandLord */ = {
 			isa = PBXGroup;
 			children = (
+				FAA6CBBD172F44DC00615807 /* 1.png */,
+				FAA6CBBE172F44DC00615807 /* 4.png */,
+				FAA6CBBF172F44DC00615807 /* 3.png */,
+				FAA6CBC0172F44DC00615807 /* 5.png */,
+				FAA6CBC1172F44DC00615807 /* 2.png */,
 				FAA6CBB7172F0A9C00615807 /* castle_1.png */,
 				FAA6CBB8172F0A9C00615807 /* castle_2.png */,
 				FAA6CBB9172F0A9C00615807 /* castle_3.png */,
@@ -1086,6 +1104,8 @@
 				FAA6CBB2172F09A600615807 /* messageObject.m */,
 				FAA6CBB4172F0A3C00615807 /* messageTableViewController.h */,
 				FAA6CBB5172F0A3C00615807 /* messageTableViewController.m */,
+				FAA6CBC7172F46EC00615807 /* itemObj.h */,
+				FAA6CBC8172F46ED00615807 /* itemObj.m */,
 			);
 			path = LandLord;
 			sourceTree = "<group>";
@@ -2085,6 +2105,11 @@
 				FAA6CBBA172F0A9C00615807 /* castle_1.png in Resources */,
 				FAA6CBBB172F0A9C00615807 /* castle_2.png in Resources */,
 				FAA6CBBC172F0A9C00615807 /* castle_3.png in Resources */,
+				FAA6CBC2172F44DC00615807 /* 1.png in Resources */,
+				FAA6CBC3172F44DC00615807 /* 4.png in Resources */,
+				FAA6CBC4172F44DC00615807 /* 3.png in Resources */,
+				FAA6CBC5172F44DC00615807 /* 5.png in Resources */,
+				FAA6CBC6172F44DC00615807 /* 2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2113,6 +2138,7 @@
 				02F1AAA1172ED19800E1178B /* MyFriendViewController.m in Sources */,
 				FAA6CBB3172F09A600615807 /* messageObject.m in Sources */,
 				FAA6CBB6172F0A3C00615807 /* messageTableViewController.m in Sources */,
+				FAA6CBC9172F46ED00615807 /* itemObj.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

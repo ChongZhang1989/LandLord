@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "itemObj.h"
 
 @interface StoreViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate>
 
