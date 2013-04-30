@@ -332,6 +332,7 @@
 		FA9B4B1F172A0B6C005D2BE5 /* MyPinView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9B4B1E172A0B6C005D2BE5 /* MyPinView.m */; };
 		FA9B4D7B172A0C8C005D2BE5 /* MapPin.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9B4D7A172A0C8C005D2BE5 /* MapPin.m */; };
 		FA9B4D7E172A23A3005D2BE5 /* OrgPin.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9B4D7D172A23A3005D2BE5 /* OrgPin.m */; };
+		FA9F80391730252500FD4177 /* landdetailview.png in Resources */ = {isa = PBXBuildFile; fileRef = FA9F80381730252500FD4177 /* landdetailview.png */; };
 		FA9FE3B3172C6CD300BFF86E /* viewLandDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9FE3B2172C6CD300BFF86E /* viewLandDetailViewController.m */; };
 		FAA6CBB3172F09A600615807 /* messageObject.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA6CBB2172F09A600615807 /* messageObject.m */; };
 		FAA6CBB6172F0A3C00615807 /* messageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA6CBB5172F0A3C00615807 /* messageTableViewController.m */; };
@@ -997,6 +998,7 @@
 		FA9B4D7A172A0C8C005D2BE5 /* MapPin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapPin.m; sourceTree = "<group>"; };
 		FA9B4D7C172A23A3005D2BE5 /* OrgPin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OrgPin.h; path = "../iconbeast-lite/iconbeast lite - png/OrgPin.h"; sourceTree = "<group>"; };
 		FA9B4D7D172A23A3005D2BE5 /* OrgPin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OrgPin.m; path = "../iconbeast-lite/iconbeast lite - png/OrgPin.m"; sourceTree = "<group>"; };
+		FA9F80381730252500FD4177 /* landdetailview.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = landdetailview.png; sourceTree = SOURCE_ROOT; };
 		FA9FE3B1172C6CD300BFF86E /* viewLandDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = viewLandDetailViewController.h; sourceTree = "<group>"; };
 		FA9FE3B2172C6CD300BFF86E /* viewLandDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = viewLandDetailViewController.m; sourceTree = "<group>"; };
 		FAA6CBB1172F09A600615807 /* messageObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = messageObject.h; sourceTree = "<group>"; };
@@ -1076,6 +1078,7 @@
 		020158581727201F00AA98F6 /* LandLord */ = {
 			isa = PBXGroup;
 			children = (
+				FA9F80381730252500FD4177 /* landdetailview.png */,
 				FAE36EC0172FA63F00159FB7 /* mylandview.jpg */,
 				FAA6CBD4172F52BE00615807 /* itembackground.png */,
 				FAA6CBD0172F4FB300615807 /* 9.png */,
@@ -2143,6 +2146,7 @@
 				FAA6CBD3172F4FB400615807 /* 6.png in Resources */,
 				FAA6CBD5172F52BE00615807 /* itembackground.png in Resources */,
 				FAE36EC1172FA63F00159FB7 /* mylandview.jpg in Resources */,
+				FA9F80391730252500FD4177 /* landdetailview.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

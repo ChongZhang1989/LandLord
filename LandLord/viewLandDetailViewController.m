@@ -139,7 +139,7 @@
     CGFloat height = [UIScreen mainScreen].bounds.size.height;
     
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, width, height)];
-    view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"mylandview.jpg"]];
+    view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"landdetailview.png"]];
     _currland = _mappin.currLand;
     NSLog(@"%@", _currland.owner);
     NSLog(@"%@", _currland.type);
@@ -158,7 +158,7 @@
         _landname.layer.borderWidth = 0;
         _landname.layer.borderColor = [[UIColor blueColor] CGColor];
         _landname.font = [UIFont systemFontOfSize:17.0];
-        _landname.backgroundColor = [UIColor whiteColor];
+        _landname.backgroundColor = [UIColor clearColor];
         _landname.text = lname;
         
         UIButton *postname = [UIButton buttonWithType:UIButtonTypeRoundedRect];
@@ -178,7 +178,7 @@
 		_landpost.layer.borderColor = [[UIColor grayColor] CGColor];
 		_landpost.textColor = [UIColor blackColor];
 		_landpost.font = [UIFont systemFontOfSize:17.0];
-		_landpost.backgroundColor = [UIColor whiteColor];
+		_landpost.backgroundColor = [UIColor clearColor];
 		_landpost.text = lmsg;
         
 		UIButton *postMessage = [UIButton buttonWithType:UIButtonTypeRoundedRect];
@@ -197,6 +197,7 @@
 		CGFloat maxWidth = [UIScreen mainScreen].bounds.size.width;
 		UILabel *name = [[UILabel alloc] initWithFrame:CGRectMake(20, 20, maxWidth - 40, 40)];
 		[name setLineBreakMode:NSLineBreakByCharWrapping];
+        name.backgroundColor = [UIColor clearColor];
 		[name setText:[NSString stringWithFormat:@"Land Name: %@", _currland.landname]];
 		[view addSubview:name];
 		
@@ -204,6 +205,7 @@
 		[message setLineBreakMode:NSLineBreakByCharWrapping];
 		[message setNumberOfLines:10];
 		[message setText:[NSString stringWithFormat:@"Land Message: %@", _currland.landmsg]];
+        message.backgroundColor = [UIColor clearColor];
 		[view addSubview:message];
 		[self setTitle:[NSString stringWithFormat:@"%@'s Land", _currland.owner]];
 		
@@ -223,12 +225,14 @@
 	UILabel *name = [[UILabel alloc] initWithFrame:CGRectMake(20, 20, maxWidth - 40, 40)];
 	[name setLineBreakMode:NSLineBreakByCharWrapping];
 	[name setText:[NSString stringWithFormat:@"Land Name: %@", _currland.landname]];
+    name.backgroundColor = [UIColor clearColor];
 	[view addSubview:name];
 	
 	UILabel *message = [[UILabel alloc] initWithFrame:CGRectMake(20, 80, maxWidth - 40, 40)];
 	[message setLineBreakMode:NSLineBreakByCharWrapping];
 	[message setNumberOfLines:10];
 	[message setText:[NSString stringWithFormat:@"Land Message: %@", _currland.landmsg]];
+    message.backgroundColor = [UIColor clearColor];
 	[view addSubview:message];
 	[self setTitle:[NSString stringWithFormat:@"%@'s Land", _currland.owner]];
 	
