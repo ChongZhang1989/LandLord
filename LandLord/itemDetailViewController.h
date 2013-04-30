@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "itemObj.h"
+#import "LandLordAppDelegate.h"
 
 @interface itemDetailViewController : UIViewController
 @property (nonatomic, strong) itemObj *itemobj;

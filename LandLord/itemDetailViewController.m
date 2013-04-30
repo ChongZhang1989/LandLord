@@ -12,6 +12,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *itemImage;
 @property (weak, nonatomic) IBOutlet UILabel *iteminfolabel;
 @property (weak, nonatomic) IBOutlet UILabel *cost;
+@property (nonatomic, strong) NSString *username;
 
 @end
 
@@ -27,7 +28,7 @@
 }
 - (IBAction)buyitem:(id)sender {
     NSLog(@"Get pressed");
-    NSString *urlstr = [NSString stringWithFormat:@"http://lordmap2k13.appspot.com/buyitem?userId=bruce&index=%@", _itemobj.index];
+    NSString *urlstr = [NSString stringWithFormat:@"http://lordmap2k13.appspot.com/buyitem?userId=%@&index=%@", _username,_itemobj.index];
     NSLog(urlstr);
     NSURL *url = [NSURL URLWithString:urlstr];
     NSLog(@"setup url");
@@ -56,6 +57,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    LandLordAppDelegate *delegate = (LandLordAppDelegate *)[[UIApplication sharedApplication] delegate];
+    _username = delegate.username;
+    
 	// Do any additional setup after loading the view.
     NSLog(@"%@", _itemobj.name);
     [self setTitle:_itemobj.name];
