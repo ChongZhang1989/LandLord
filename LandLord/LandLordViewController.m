@@ -178,6 +178,8 @@ int refresh = 0;
 			land.currentLandid = [result objectForKey:@"id"];
             land.landname = [result objectForKey:@"name"];
             land.landmsg = [result objectForKey:@"msg"];
+            NSLog(@"landname %@",land.landname);
+            NSLog(@"landmsg %@", land.landmsg);
 			[self.landlist addObject:land];
 		}
         //Add pins here in a new thread

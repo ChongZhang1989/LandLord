@@ -69,7 +69,12 @@
         //post land post
         NSLog(@"%@",_landpost.text);
         
-        NSString *nameurlstr = [NSString stringWithFormat:@"http://lordmap2k13.appspot.com/setmsg?landId=%@&msg=%@", _currland.currentLandid, _landpost.text];
+        NSString *originalString = _landpost.text;
+        
+        //NSString *newString = [originalString stringByReplacingOccurancesOfString:@" " withString:@"%20"];
+        NSString *newstring = [originalString stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
+        
+        NSString *nameurlstr = [NSString stringWithFormat:@"http://lordmap2k13.appspot.com/setmsg?landId=%@&msg=%@", _currland.currentLandid, newstring];
         NSURL *nameurl = [NSURL URLWithString:nameurlstr];
         NSData *data = [NSData dataWithContentsOfURL:nameurl];
         if(data == nil){
@@ -87,7 +92,12 @@
 	} else if([sender tag] == 3){
         //post land name
         NSLog(@"%@", _landname.text);
-        NSString *nameurlstr = [NSString stringWithFormat:@"http://lordmap2k13.appspot.com/setname?landId=%@&name=%@", _currland.currentLandid, _landname.text];
+        
+        NSString *originalstring = _landname.text;
+        
+        NSString *newstring = [originalstring stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
+        
+        NSString *nameurlstr = [NSString stringWithFormat:@"http://lordmap2k13.appspot.com/setname?landId=%@&name=%@", _currland.currentLandid, newstring];
         NSLog(@"%@",nameurlstr);
         NSURL *nameurl = [NSURL URLWithString:nameurlstr];
         NSData *namedata = [NSData dataWithContentsOfURL:nameurl];
@@ -120,7 +130,9 @@
 	// Do any additional setup after loading the view.
     self.title = @"Detailed View";
     NSLog(@"Get into new view 2");
-    
+    NSLog(@"!!!!!! %@", _currland.landname);
+    NSLog(@"!!!!!! %@", _currland.landmsg);
+    //NSLog(@"%@", )
     _landpost.delegate = self;
     _landpost.delegate = self;
     
@@ -151,7 +163,7 @@
         _landname.text = lname;
         
         UIButton *postname = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        postname.frame = CGRectMake(maxWidth - 170, 60, 150, 60);
+        postname.frame = CGRectMake(maxWidth - 170, 60, 150, 40);
         [postname setTag: 3];
         [postname setTitle:@"Post Name" forState:UIControlStateNormal];
         [postname addTarget:self action:@selector(ButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
